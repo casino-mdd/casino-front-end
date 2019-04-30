@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Input, Button, Card, Col, Row } from 'antd';
 import casinoBackGround from '../../assets/img/casinoBG.jpg';
+import '../styles/loginStyles.css'
 
 class Login extends Component{
     constructor(props){
@@ -16,35 +17,24 @@ class Login extends Component{
 
     render(){
         return(
-            <div>
-                <h1>Casino iniciar sesión</h1>
-                <div>
-                    <img src={casinoBackGround} style={{
-                        width: '110%',
-                        height: '100vh',
-                        float: 'right',
-                        backgroundPosition: 'center',
-                        backgroundSize: 'cover'
-                    }}/>
+            <Form className='sign-in-form' onSubmit={this.handleSubmit}>
+                <h1>UN Casino iniciar sesión</h1>
+                <div className='sign-in-background-crop'>
+                    <img className='sign-in-background' alt='background' src={casinoBackGround} />
                 </div>
-                <Col md={6}>
-                <Card>
-                <Form onSubmit={this.handleSubmit}>
-                    <Form.Item label='Usuario'>
-                        <Input placeholder='Usuario' xs={6}/>
-                    </Form.Item>
-                    <Form.Item label='Contraseña'>
-                        <Input placeholder='Contraseña' type='password'/>
-                    </Form.Item>
-                    <Form.Item>
-                        <Button type='primary' htmlType='submit'>
-                            Ingresar
-                        </Button>
-                    </Form.Item>
-                </Form>
-                </Card>
-                </Col>                
-            </div>
+                
+                <Form.Item label='Usuario'>
+                    <Input placeholder='Usuario' xs={6}/>
+                </Form.Item>
+                <Form.Item label='Contraseña'>
+                    <Input placeholder='Contraseña' type='password'/>
+                </Form.Item>
+                <Form.Item>
+                    <Button type='primary' htmlType='submit'>
+                        Ingresar
+                    </Button>
+                </Form.Item>
+            </Form>
         );
     }
 }

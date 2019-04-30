@@ -5,17 +5,11 @@ const { Header, Sider, Content } = Layout;
 export default class NavigationSider extends Component{
     render(){
         return(
-            <Layout>
-                <Sider
-                    collapsible
-                >
-                    <Menu theme='dark'>
-                        <Menu.Item>
-                            <span>ahhhhhhhhhhh</span>
-                        </Menu.Item>
-                    </Menu>
-                </Sider>
-            </Layout>     
+            <Menu theme='dark' mode='horizontal'>
+                <Menu.Item>
+                    Casino home
+                </Menu.Item>
+            </Menu> 
         )
     }
 }
