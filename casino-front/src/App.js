@@ -4,7 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import Login from './UI/Account/login';
 import Sider from './UI/GeneralComponents/Navigation';
-import 'antd/dist/antd.css';
+//import 'antd/dist/antd.css';
 
 function App() {
   return (
