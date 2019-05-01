@@ -19,7 +19,25 @@ const gender = [{
 
 ];
 
-class RegisterClient extends React.Component{
+const status = [{
+    value: 'Active',
+    label: 'Activo',
+}, {
+    value: 'Inactive',
+    label: 'Inactivo',
+},
+    {
+        value: 'Retired',
+        label: 'Pensionado',
+    },
+    {
+        value: 'NoSpec',
+        label: 'Sin especificar',
+    }
+
+];
+
+class RegOffice extends React.Component{
     state = {
         confirmDirty: false,
         //  autoCompleteResult: [],
@@ -64,7 +82,7 @@ class RegisterClient extends React.Component{
             <div>
                 <br/>
                 <center>
-                    <Title>Registro de clientes</Title>
+                    <Title>Registro de Sucursales</Title>
                 </center>
                 <br/>
 
@@ -73,45 +91,16 @@ class RegisterClient extends React.Component{
                         label="Nombre"
                     >
                         {getFieldDecorator('name', {
-                            rules: [{ required: true, message: 'Por favor ingrese su nombre', whitespace: true }],
+                            rules: [{ required: true, message: 'Por favor ingrese el nombre de la sucursal', whitespace: true }],
                         })(
                             <Input />
                         )}
                     </Form.Item>
                     <Form.Item
-                        label="Apellido"
+                        label="Ciudad"
                     >
-                        {getFieldDecorator('lastname', {
-                            rules: [{ required: true, message: 'Por favor ingrese su apellido', whitespace: true }],
-                        })(
-                            <Input />
-                        )}
-                    </Form.Item>
-                    <Form.Item
-                        label="Fecha de nacimiento"
-                    >
-                        {getFieldDecorator('date-picker', config)(
-                            <DatePicker  placeholder='Fecha'/>
-                        )}
-                    </Form.Item>
-                    <Form.Item
-                        label="Genero"
-                    >
-                        {getFieldDecorator('gender', {
-                            rules: [{ type: 'array', required: true, message: 'Por favor seleccione una opción' }],
-                        })(
-                            <Cascader  placeholder='Seleccione' options={gender} />
-                        )}
-                    </Form.Item>
-                    <Form.Item
-                        label ="Correo"
-                    >
-                        {getFieldDecorator('email', {
-                            rules: [{
-                                type: 'email', message: 'Este correo electrónico no es valido',
-                            }, {
-                                required: true, message: 'Por favor ingrese el correo electrónico con el cual desea crear la cuenta',
-                            }],
+                        {getFieldDecorator('city', {
+                            rules: [{ required: true, message: 'Por favor ingrese una ciudad', whitespace: true }],
                         })(
                             <Input />
                         )}
@@ -121,7 +110,7 @@ class RegisterClient extends React.Component{
                         label="Dirección"
                     >
                         {getFieldDecorator('address', {
-                            rules: [{ required: true, message: 'Por favor ingrese su dirección de residencia', whitespace: true }],
+                            rules: [{ required: true, message: 'Por favor ingrese una dirección', whitespace: true }],
                         })(
                             <Input />
                         )}
@@ -131,19 +120,21 @@ class RegisterClient extends React.Component{
                         label="Teléfono"
                     >
                         {getFieldDecorator('phone', {
-                            rules: [{ required: true, message: 'Por favor ingrese su número telefónico', whitespace: true }],
+                            rules: [{ required: true, message: 'Por favor ingrese un número telefónico', whitespace: true }],
                         })(
                             <Input />
                         )}
                     </Form.Item>
+
                     <Form.Item {...tailFormItemLayout}>
                         <Button  type="primary" htmlType="submit">Registrar</Button>
                     </Form.Item>
 
                 </Form>
+
             </div>
         );
     }
 }
 
-export default Form.create()(RegisterClient)
+export default Form.create()(RegOffice)

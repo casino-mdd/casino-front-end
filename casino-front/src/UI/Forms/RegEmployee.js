@@ -88,7 +88,7 @@ class RegisterEmployee extends React.Component{
 
                 <Form  {...formItemLayout} >
                     <Form.Item
-                        label="Nombre"
+                        label="Nombre de suscursal"
                     >
                         {getFieldDecorator('name', {
                             rules: [{ required: true, message: 'Por favor ingrese su nombre', whitespace: true }],
@@ -109,7 +109,7 @@ class RegisterEmployee extends React.Component{
                         label="Fecha de nacimiento"
                     >
                         {getFieldDecorator('date-picker-born', config)(
-                            <DatePicker />
+                            <DatePicker placeholder='Fecha'/>
                         )}
                     </Form.Item>
                     <Form.Item
@@ -118,7 +118,7 @@ class RegisterEmployee extends React.Component{
                         {getFieldDecorator('gender', {
                             rules: [{ type: 'array', required: true, message: 'Por favor seleccione una opción' }],
                         })(
-                            <Cascader options={gender} />
+                            <Cascader placeholder='Seleccione' options={gender} />
                         )}
                     </Form.Item>
                     <Form.Item
@@ -167,7 +167,7 @@ class RegisterEmployee extends React.Component{
                         label="Fecha de ingreso"
                     >
                         {getFieldDecorator('date-picker-job', config)(
-                            <DatePicker />
+                            <DatePicker placeholder='Fecha'/>
                         )}
                     </Form.Item>
                     <Form.Item
@@ -176,7 +176,7 @@ class RegisterEmployee extends React.Component{
                         {getFieldDecorator('status', {
                             rules: [{ type: 'array', required: true, message: 'Por favor seleccione una opción' }],
                         })(
-                            <Cascader options={status} />
+                            <Cascader placeholder='Seleccione' options={status} />
                         )}
                     </Form.Item>
 

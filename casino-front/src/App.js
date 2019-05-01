@@ -4,6 +4,9 @@ import logo from './logo.svg';
 import './App.css';
 import Login from './UI/Account/login';
 import Sider from './UI/GeneralComponents/Navigation';
+import RegisterClient from "./UI/Forms/RegClient";
+import RegisterEmployee from "./UI/Forms/RegEmployee";
+import RegOffice from "./UI/Forms/RegOffice";
 //import 'antd/dist/antd.css';
 
 function App() {
@@ -11,9 +14,11 @@ function App() {
     <div className="App">
       <Sider />
       <Layout>
-        <Login />
+          <RegOffice/>
       </Layout>
+
     </div>
+
   );
 }
 
