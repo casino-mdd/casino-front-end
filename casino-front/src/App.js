@@ -7,6 +7,8 @@ import Sider from './UI/GeneralComponents/Navigation';
 import RegisterClient from "./UI/Forms/RegClient";
 import RegisterEmployee from "./UI/Forms/RegEmployee";
 import RegOffice from "./UI/Forms/RegOffice";
+import RegSale from "./RegSale";
+
 //import 'antd/dist/antd.css';
 
 function App() {
@@ -14,7 +16,7 @@ function App() {
     <div className="App">
       <Sider />
       <Layout>
-          <RegOffice/>
+          <RegSale/>
       </Layout>
 
     </div>

@@ -19,24 +19,6 @@ const gender = [{
 
 ];
 
-const status = [{
-    value: 'Active',
-    label: 'Activo',
-}, {
-    value: 'Inactive',
-    label: 'Inactivo',
-},
-    {
-        value: 'Retired',
-        label: 'Pensionado',
-    },
-    {
-        value: 'NoSpec',
-        label: 'Sin especificar',
-    }
-
-];
-
 class RegisterEmployee extends React.Component{
     state = {
         confirmDirty: false,
@@ -82,25 +64,25 @@ class RegisterEmployee extends React.Component{
             <div>
                 <br/>
                 <center>
-                    <Title>Registro de trabajadores</Title>
+                    <Title>Registro de funcionarios</Title>
                 </center>
                 <br/>
 
                 <Form  {...formItemLayout} >
                     <Form.Item
-                        label="Nombre de suscursal"
+                        label="Nombres"
                     >
                         {getFieldDecorator('name', {
-                            rules: [{ required: true, message: 'Por favor ingrese su nombre', whitespace: true }],
+                            rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
                         })(
                             <Input />
                         )}
                     </Form.Item>
                     <Form.Item
-                        label="Apellido"
+                        label="Apellidos"
                     >
                         {getFieldDecorator('lastname', {
-                            rules: [{ required: true, message: 'Por favor ingrese su apellido', whitespace: true }],
+                            rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
                         })(
                             <Input />
                         )}
@@ -113,7 +95,7 @@ class RegisterEmployee extends React.Component{
                         )}
                     </Form.Item>
                     <Form.Item
-                        label="Genero"
+                        label="Género"
                     >
                         {getFieldDecorator('gender', {
                             rules: [{ type: 'array', required: true, message: 'Por favor seleccione una opción' }],
@@ -126,20 +108,10 @@ class RegisterEmployee extends React.Component{
                     >
                         {getFieldDecorator('email', {
                             rules: [{
-                                type: 'email', message: 'Este correo electrónico no es valido',
+                                type: 'email', message: 'Este correo electrónico no es válido',
                             }, {
-                                required: true, message: 'Por favor ingrese el correo electrónico con el cual desea crear la cuenta',
+                                required: true, message: 'Este campo es obligatorio',
                             }],
-                        })(
-                            <Input />
-                        )}
-                    </Form.Item>
-
-                    <Form.Item
-                        label="Dirección"
-                    >
-                        {getFieldDecorator('address', {
-                            rules: [{ required: true, message: 'Por favor ingrese su dirección de residencia', whitespace: true }],
                         })(
                             <Input />
                         )}
@@ -149,7 +121,7 @@ class RegisterEmployee extends React.Component{
                         label="Teléfono"
                     >
                         {getFieldDecorator('phone', {
-                            rules: [{ required: true, message: 'Por favor ingrese su número telefónico', whitespace: true }],
+                            rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
                         })(
                             <Input />
                         )}
@@ -158,7 +130,7 @@ class RegisterEmployee extends React.Component{
                         label="Cargo"
                     >
                         {getFieldDecorator('job', {
-                            rules: [{ required: true, message: 'Por favor ingrese su cargo', whitespace: true }],
+                            rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
                         })(
                             <Input />
                         )}
@@ -170,16 +142,6 @@ class RegisterEmployee extends React.Component{
                             <DatePicker placeholder='Fecha'/>
                         )}
                     </Form.Item>
-                    <Form.Item
-                        label="Estado actual"
-                    >
-                        {getFieldDecorator('status', {
-                            rules: [{ type: 'array', required: true, message: 'Por favor seleccione una opción' }],
-                        })(
-                            <Cascader placeholder='Seleccione' options={status} />
-                        )}
-                    </Form.Item>
-
                     <Form.Item {...tailFormItemLayout}>
                         <Button  type="primary" htmlType="submit">Registrar</Button>
                     </Form.Item>

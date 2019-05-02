@@ -1,11 +1,26 @@
 import {
-    Form, Input,  Button,  Typography,
+    Form, Input, Button, Typography, Cascader,
 } from 'antd';
 import 'antd/dist/antd.css';
 
 import React from 'react'
 
-class RegOffice extends React.Component{
+
+const payment = [{
+    value: 'Cash',
+    label: 'Efectivo',
+}, {
+    value: 'Credit',
+    label: 'Tarjeta crédito',
+},
+    {
+        value: 'Debit',
+        label: 'Tarjeta débito',
+    }
+
+];
+
+class RegSale extends React.Component{
     state = {
         confirmDirty: false,
         //  autoCompleteResult: [],
@@ -46,24 +61,24 @@ class RegOffice extends React.Component{
             <div>
                 <br/>
                 <center>
-                    <Title>Registro de oficinas</Title>
+                    <Title>Registro de venta de fichas</Title>
                 </center>
                 <br/>
 
                 <Form  {...formItemLayout} >
                     <Form.Item
-                        label="Nombre de oficina"
+                        label="Número de fichas"
                     >
-                        {getFieldDecorator('name', {
+                        {getFieldDecorator('token', {
                             rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
                         })(
                             <Input />
                         )}
                     </Form.Item>
                     <Form.Item
-                        label="Ciudad"
+                        label="Costo total"
                     >
-                        {getFieldDecorator('city', {
+                        {getFieldDecorator('cost', {
                             rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
                         })(
                             <Input />
@@ -71,12 +86,12 @@ class RegOffice extends React.Component{
                     </Form.Item>
 
                     <Form.Item
-                        label="Dirección"
+                        label="Método de pago"
                     >
-                        {getFieldDecorator('address', {
+                        {getFieldDecorator('payment', {
                             rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
                         })(
-                            <Input />
+                            <Cascader placeholder='Seleccione' options={payment} />
                         )}
                     </Form.Item>
                     <Form.Item {...tailFormItemLayout}>
@@ -90,4 +105,4 @@ class RegOffice extends React.Component{
     }
 }
 
-export default Form.create()(RegOffice)
+export default Form.create()(RegSale)

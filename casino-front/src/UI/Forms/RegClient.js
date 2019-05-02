@@ -70,19 +70,19 @@ class RegisterClient extends React.Component{
 
                 <Form  {...formItemLayout} >
                     <Form.Item
-                        label="Nombre"
+                        label="Nombres"
                     >
                         {getFieldDecorator('name', {
-                            rules: [{ required: true, message: 'Por favor ingrese su nombre', whitespace: true }],
+                            rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
                         })(
                             <Input />
                         )}
                     </Form.Item>
                     <Form.Item
-                        label="Apellido"
+                        label="Apellidos"
                     >
                         {getFieldDecorator('lastname', {
-                            rules: [{ required: true, message: 'Por favor ingrese su apellido', whitespace: true }],
+                            rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
                         })(
                             <Input />
                         )}
@@ -95,7 +95,7 @@ class RegisterClient extends React.Component{
                         )}
                     </Form.Item>
                     <Form.Item
-                        label="Genero"
+                        label="Género"
                     >
                         {getFieldDecorator('gender', {
                             rules: [{ type: 'array', required: true, message: 'Por favor seleccione una opción' }],
@@ -108,20 +108,10 @@ class RegisterClient extends React.Component{
                     >
                         {getFieldDecorator('email', {
                             rules: [{
-                                type: 'email', message: 'Este correo electrónico no es valido',
+                                type: 'email', message: 'Este correo no es válido',
                             }, {
-                                required: true, message: 'Por favor ingrese el correo electrónico con el cual desea crear la cuenta',
+                                required: true, message: 'Este campo es obligatorio',
                             }],
-                        })(
-                            <Input />
-                        )}
-                    </Form.Item>
-
-                    <Form.Item
-                        label="Dirección"
-                    >
-                        {getFieldDecorator('address', {
-                            rules: [{ required: true, message: 'Por favor ingrese su dirección de residencia', whitespace: true }],
                         })(
                             <Input />
                         )}
@@ -131,7 +121,7 @@ class RegisterClient extends React.Component{
                         label="Teléfono"
                     >
                         {getFieldDecorator('phone', {
-                            rules: [{ required: true, message: 'Por favor ingrese su número telefónico', whitespace: true }],
+                            rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
                         })(
                             <Input />
                         )}
