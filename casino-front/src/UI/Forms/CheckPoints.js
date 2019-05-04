@@ -5,21 +5,7 @@ import 'antd/dist/antd.css';
 
 import React from 'react'
 
-
-const reward = [{
-    value: 'reward1',
-    label: 'Premio1',
-}, {
-    value: 'reward2',
-    label: 'Premio2',
-},
-    {
-        value: 'reward3',
-        label: 'Premio3',
-    }
-];
-
-class RegExchange extends React.Component{
+class CheckPoints extends React.Component{
     state = {
         confirmDirty: false,
         //  autoCompleteResult: [],
@@ -59,7 +45,7 @@ class RegExchange extends React.Component{
         return(
             <div align="center">
                 <br/>
-                    <Title>Registro de intercambio de puntos</Title>
+                    <Title>Consulta de puntos</Title>
                 <br/>
 
                 <Form  {...formItemLayout} >
@@ -72,23 +58,9 @@ class RegExchange extends React.Component{
                             <Input />
                         )}
                     </Form.Item>
-                    <Form.Item
-                        label="Premio deseado"
-                    >
-                        {getFieldDecorator('reward', {
-                            rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
-                        })(
-                            <Select placeholder='Seleccione' options={reward} >
-                                {reward.map((option, i) => (
-                                    <Select.Option value={option.value} key={i}>
-                                        {option.label}
-                                    </Select.Option>
-                                ))}
-                            </Select>
-                        )}
-                    </Form.Item>
+
                     <Form.Item {...tailFormItemLayout}>
-                        <Button  type="primary" htmlType="submit">Registrar</Button>
+                        <Button  type="primary" htmlType="submit">Consultar</Button>
                     </Form.Item>
 
                 </Form>
@@ -98,4 +70,4 @@ class RegExchange extends React.Component{
     }
 }
 
-export default Form.create()(RegExchange)
+export default Form.create()(CheckPoints)

@@ -57,11 +57,9 @@ class RegSale extends React.Component{
 
         //What is shown in display
         return(
-            <div>
+            <div align="center">
                 <br/>
-                <center>
                     <Title>Registro de venta de fichas</Title>
-                </center>
                 <br/>
 
                 <Form  {...formItemLayout} >

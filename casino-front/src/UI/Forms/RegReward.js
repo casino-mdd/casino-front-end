@@ -42,11 +42,9 @@ class RegReward extends React.Component{
 
         //What is shown in display
         return(
-            <div>
+            <div align="center">
                 <br/>
-                <center>
                     <Title>Registro de premios</Title>
-                </center>
                 <br/>
 
                 <Form  {...formItemLayout} >

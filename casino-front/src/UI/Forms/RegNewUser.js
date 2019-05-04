@@ -70,11 +70,9 @@ class RegNewUser extends React.Component{
 
         //What is shown in display
         return(
-            <div>
+            <div align="center">
                 <br/>
-                <center>
                     <Title>Registro de nuevos usuarios</Title>
-                </center>
                 <br/>
 
                 <Form  {...formItemLayout} >
