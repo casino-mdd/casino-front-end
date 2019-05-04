@@ -1,5 +1,5 @@
 import {
-    Form, Input, Cascader, Button, DatePicker, Typography,
+    Form, Input, Button, DatePicker, Typography, Select,
 } from 'antd';
 import 'antd/dist/antd.css';
 
@@ -88,6 +88,15 @@ class RegisterClient extends React.Component{
                         )}
                     </Form.Item>
                     <Form.Item
+                        label="Cédula"
+                    >
+                        {getFieldDecorator('id', {
+                            rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
+                        })(
+                            <Input />
+                        )}
+                    </Form.Item>
+                    <Form.Item
                         label="Fecha de nacimiento"
                     >
                         {getFieldDecorator('date-picker', config)(
@@ -98,9 +107,15 @@ class RegisterClient extends React.Component{
                         label="Género"
                     >
                         {getFieldDecorator('gender', {
-                            rules: [{ type: 'array', required: true, message: 'Por favor seleccione una opción' }],
+                            rules: [{ required: true, message: 'Por favor seleccione una opción' }],
                         })(
-                            <Cascader  placeholder='Seleccione' options={gender} />
+                            <Select placeholder='Seleccione' options={gender} >
+                                {gender.map((option, i) => (
+                                    <Select.Option value={option.value} key={i}>
+                                    {option.label}
+                                    </Select.Option>
+                            ))}
+                            </Select>
                         )}
                     </Form.Item>
                     <Form.Item

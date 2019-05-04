@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1053c102-1a3b-42d7-8a91-11fe13d0c94b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/RegSale.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/UI/Forms/RegExchange.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/UI/Forms/RegNewUser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/UI/Forms/RegReward.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RegSale.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Forms/RegSale.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI/Forms/RegClient.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Forms/RegClient.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UI/Forms/RegEmployee.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Forms/RegEmployee.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/Forms/RegOffice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Forms/RegOffice.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,8 +25,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+            <state relative-caret-position="236">
+              <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -32,11 +34,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/RegSale.js">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/UI/Forms/RegSale.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="93" column="61" selection-start-line="93" selection-start-column="61" selection-end-line="93" selection-end-column="61" />
+            <state relative-caret-position="170">
+              <caret line="27" selection-end-line="122" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/UI/Forms/RegNewUser.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="129" column="27" selection-start-line="129" selection-start-column="27" selection-end-line="129" selection-end-column="27" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -45,13 +56,34 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/UI/Forms/RegEmployee.js">
+        <entry file="file://$PROJECT_DIR$/src/UI/Forms/RegExchange.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="102" column="28" selection-start-line="102" selection-start-column="28" selection-end-line="102" selection-end-column="82" />
+            <state relative-caret-position="340">
+              <caret line="20" lean-forward="true" selection-end-line="103" />
               <folding>
-                <element signature="e#0#82#0" expanded="true" />
+                <element signature="e#0#78#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/UI/Forms/RegReward.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="202">
+              <caret line="74" column="23" lean-forward="true" selection-start-line="74" selection-start-column="23" selection-end-line="74" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#78#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/UI/Forms/RegClient.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="6" selection-start-line="6" selection-end-line="19" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -78,6 +110,11 @@
       <find>addr</find>
       <find>Por Fa</find>
       <find>gender</find>
+      <find>select</find>
+      <find>cascad</find>
+      <find>casca</find>
+      <find>Apellid</find>
+      <find>selec</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -88,11 +125,15 @@
       <list>
         <option value="$PROJECT_DIR$/package-lock.json" />
         <option value="$PROJECT_DIR$/src/UI/Forms/RegMachine.js" />
-        <option value="$PROJECT_DIR$/src/UI/Forms/RegClient.js" />
         <option value="$PROJECT_DIR$/src/UI/Forms/RegOffice.js" />
-        <option value="$PROJECT_DIR$/src/UI/Forms/RegEmployee.js" />
-        <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/RegSale.js" />
+        <option value="$PROJECT_DIR$/src/UI/Forms/RegClient.js" />
+        <option value="$PROJECT_DIR$/src/UI/Forms/RegEmployee.js" />
+        <option value="$PROJECT_DIR$/src/UI/Forms/RegSale.js" />
+        <option value="$PROJECT_DIR$/src/UI/Forms/RegNewUser.js" />
+        <option value="$PROJECT_DIR$/src/UI/Forms/RegExchange.js" />
+        <option value="$PROJECT_DIR$/src/UI/Forms/RegReward.js" />
+        <option value="$PROJECT_DIR$/src/App.js" />
       </list>
     </option>
   </component>
@@ -139,13 +180,6 @@
               <item name="casino-front" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="UI" type="462c0819:PsiDirectoryNode" />
-              <item name="Account" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="casino-front" type="b2602c69:ProjectViewProjectNode" />
-              <item name="casino-front" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="UI" type="462c0819:PsiDirectoryNode" />
               <item name="Forms" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -163,6 +197,11 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\lamr1\OneDrive\Documentos\Maestria\MDD\Casino\casino-front-end\casino-front\src\UI\Forms" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -210,12 +249,12 @@
       <updated>1556588460209</updated>
       <workItem from="1556588461316" duration="2448000" />
       <workItem from="1556590995576" duration="1668000" />
-      <workItem from="1556665237603" duration="8972000" />
+      <workItem from="1556665237603" duration="13123000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13088000" />
+    <option name="totallyTimeSpent" value="17239000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -236,7 +275,7 @@
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.30878186" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.30878186" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -272,6 +311,18 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/UI/Forms/RegReward.js</url>
+          <line>62</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/index.js">
@@ -315,49 +366,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI/Forms/RegClient.js">
+    <entry file="file://$PROJECT_DIR$/src/UI/Forms/RegEmployee.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="75" column="89" selection-start-line="75" selection-start-column="64" selection-end-line="75" selection-end-column="89" />
+        <state relative-caret-position="375">
+          <caret line="97" column="32" selection-start-line="97" selection-start-column="32" selection-end-line="97" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#80#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UI/Forms/RegOffice.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="647">
-          <caret line="80" column="32" selection-end-line="93" />
+        <state relative-caret-position="391">
+          <caret line="66" column="71" selection-start-line="66" selection-start-column="71" selection-end-line="66" selection-end-column="71" />
           <folding>
             <element signature="e#0#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UI/Forms/RegNewUser.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="129" column="27" selection-start-line="129" selection-start-column="27" selection-end-line="129" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UI/Forms/RegSale.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="27" selection-end-line="122" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UI/Forms/RegClient.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="6" selection-start-line="6" selection-end-line="19" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UI/Forms/RegExchange.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" lean-forward="true" selection-end-line="103" />
+          <folding>
+            <element signature="e#0#78#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+        <state relative-caret-position="236">
+          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI/Forms/RegEmployee.js">
+    <entry file="file://$PROJECT_DIR$/src/UI/Forms/RegReward.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="102" column="28" selection-start-line="102" selection-start-column="28" selection-end-line="102" selection-end-column="82" />
+        <state relative-caret-position="202">
+          <caret line="74" column="23" lean-forward="true" selection-start-line="74" selection-start-column="23" selection-end-line="74" selection-end-column="23" />
           <folding>
-            <element signature="e#0#82#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RegSale.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="93" column="61" selection-start-line="93" selection-start-column="61" selection-end-line="93" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#62#0" expanded="true" />
+            <element signature="e#0#78#0" expanded="true" />
           </folding>
         </state>
       </provider>
