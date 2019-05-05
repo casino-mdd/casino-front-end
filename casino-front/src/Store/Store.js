@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import office from './Reducers/OfficeReducer';
 import employee from './Reducers/EmployeeReducer';
 import client from './Reducers/ClientReducer';
+import user from './Reducers/UserReducer';
 
 const rootReducer = combineReducers({
     office,
     employee,
-    client
+    client,
+    user
 });
 
 const store = createStore(

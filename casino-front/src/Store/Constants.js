@@ -17,3 +17,7 @@ export const SalesReducerConstants = {
 export const ExchangesReducerConstants = {
 
 };
+
+export const UserReducerConstants = {
+    TOGGLE_CREATE_USER_MODAL: 'TOGGLE_CREATE_USER_MODAL'
+};

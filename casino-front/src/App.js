@@ -15,6 +15,12 @@ import ClientsList from "./UI/Client/Clients";
 import Offices from './Containers/OfficesContainer';
 import Employees from  './Containers/EmployeesContainer';
 import Clients from './Containers/ClientContainer';
+import SalesForm from "./UI/Sales/SalesForm";
+import RewardForm from "./UI/Office/Rewards/RewardForm";
+import ExchangeForm from "./UI/Exchange/ExchangeForm";
+import RewardsList from "./UI/Office/Rewards/Rewards";
+import UsersList from "./UI/Users/Users";
+import Users from './Containers/UserContainer';
 
 class App extends Component {
   render(){
@@ -23,10 +29,15 @@ class App extends Component {
                 <NavMenu />
                 <Route exact path='/' component={Login}/>
                 <Route exact path={Routes.offices} component={Offices} />
-                <Route path={Routes.sales} component={SalesList} />
                 <Route path={Routes.employees} component={Employees}/>
+                <Route path={Routes.sales} component={SalesList} />
+                <Route path={Routes.salesRegister} component={SalesForm} />
                 <Route path={Routes.exchangeReport} component={ExchangeReport} />
+                <Route path={Routes.exchangeRegister} component={ExchangeForm} />
                 <Route path={Routes.clients} component={Clients} />
+                <Route path={Routes.rewardRegister} component={RewardForm} />
+                <Route path={Routes.rewards} component={RewardsList} />
+                <Route path={Routes.users} component={Users} />
             </div>
 
     );

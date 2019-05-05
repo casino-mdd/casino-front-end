@@ -4,7 +4,7 @@ import Routes from '../../utils/routes';
 import {NavLink} from 'react-router-dom';
 const { Header, Sider, Content } = Layout;
 const  Item  = Menu.Item;
-const SubMenu = Menu.Item;
+const SubMenu = Menu.SubMenu;
 
 export default class NavigationSider extends Component{
     render(){
@@ -31,14 +31,45 @@ export default class NavigationSider extends Component{
                         Oficinas
                     </NavLink>
                 </Item>
+                <SubMenu title={<span>Ventas</span>}>
+                    <Item>
+                        <NavLink to={Routes.salesRegister}>
+                            Registro ventas
+                        </NavLink>
+                    </Item>
+                    <Item>
+                        <NavLink to={Routes.sales}>
+                            Reporte Ventas
+                        </NavLink>
+                    </Item>
+                </SubMenu>
+                <SubMenu title={<span>Intercambios</span>}>
+                    <Item>
+                        <NavLink to={Routes.exchangeRegister}>
+                            Redimir premio
+                        </NavLink>
+                    </Item>
+                    <Item>
+                        <NavLink to={Routes.exchangeReport}>
+                            Reporte intercambios
+                        </NavLink>
+                    </Item>
+                </SubMenu>
+                <SubMenu title={<span>Premios</span>}>
+                    <Item>
+                        <NavLink to={Routes.rewardRegister}>
+                            Registro premios
+                        </NavLink>
+                    </Item>
+                    <Item>
+                        <NavLink to={Routes.rewards}>
+                            Listado premios
+                        </NavLink>
+                    </Item>
+                </SubMenu>
                 <Item>
-                    <NavLink to={Routes.sales}>
-                        Ventas
-                    </NavLink>
-                </Item>
-                <Item>
-                    <NavLink to={Routes.exchangeReport}>
-                        Intercambios
+                    <NavLink to={Routes.users}>
+                        Gestion usuarios
                     </NavLink>
                 </Item>
             </Menu> 
