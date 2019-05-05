@@ -9,18 +9,14 @@ const offices = [
         address: 'Calle falsa 123',
         city:'Bogota',
         name: 'Sucursal 1',
-        phone: '123123',
         employess: 123,
-        machines: 123
     },
     {
         id_office: 2,
         address: 'Calle falsa 123',
         city:'Bogota',
         name: 'Sucursal 1',
-        phone: '123123',
         employess: 123,
-        machines: 123
     }
 ];
 
@@ -36,20 +32,10 @@ const office_columns = [
         key: 'city',
     },
     {
-        title: 'Phone',
-        dataIndex: 'phone',
-        key: 'phone',
-    },
-    {
         title: '# Empleados',
         dataIndex: 'employees',
         key: 'employees',
     },
-    {
-        title: '# Máquinas',
-        dataIndex: 'machines',
-        key: 'machines',
-    }
 ];
 
 class OfficesList extends Component{

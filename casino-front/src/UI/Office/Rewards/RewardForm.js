@@ -59,7 +59,7 @@ class RegReward extends React.Component{
                         {getFieldDecorator('points', {
                             rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
                         })(
-                            <Input />
+                            <Input type="number"/>
                         )}
                     </Form.Item>
                     <Form.Item {...tailFormItemLayout}>

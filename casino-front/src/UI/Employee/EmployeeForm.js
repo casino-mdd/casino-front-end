@@ -92,7 +92,7 @@ class EmployeeForm extends React.Component{
                             {getFieldDecorator('id', {
                                 rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
                             })(
-                                <Input />
+                                <Input type="number"/>
                             )}
                         </Form.Item>
                         <Form.Item
@@ -137,7 +137,7 @@ class EmployeeForm extends React.Component{
                             {getFieldDecorator('phone', {
                                 rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
                             })(
-                                <Input />
+                                <Input type="number"/>
                             )}
                         </Form.Item>
                         <Form.Item

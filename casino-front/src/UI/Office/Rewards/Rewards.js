@@ -59,7 +59,7 @@ RewardsList.propTypes = {
 RewardsList.defaultProps = {
     rewardsByOffice: [
         {
-            office: 'Chico',
+            office: 'Chicó',
             rewards: [
                 {
                     name: 'Televisor',

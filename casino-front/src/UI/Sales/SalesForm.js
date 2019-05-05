@@ -54,7 +54,7 @@ class SaleRegister extends React.Component{
         return(
             <div align="center">
                 <br/>
-                <Title>Registro de venta de fichas</Title>
+                <Title>Registro de ventas</Title>
                 <br/>
 
                 <Form  {...formItemLayout} >
@@ -64,7 +64,7 @@ class SaleRegister extends React.Component{
                         {getFieldDecorator('id', {
                             rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
                         })(
-                            <Input />
+                            <Input type="number"/>
                         )}
                     </Form.Item>
                     <Form.Item
@@ -73,7 +73,7 @@ class SaleRegister extends React.Component{
                         {getFieldDecorator('token', {
                             rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
                         })(
-                            <Input />
+                            <Input type="number"/>
                         )}
                     </Form.Item>
                     <Form.Item
@@ -82,7 +82,7 @@ class SaleRegister extends React.Component{
                         {getFieldDecorator('cost', {
                             rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
                         })(
-                            <Input />
+                            <Input type="number"/>
                         )}
                     </Form.Item>
 
