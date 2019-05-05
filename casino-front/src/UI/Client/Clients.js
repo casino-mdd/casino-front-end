@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Table} from 'antd'
+import {Table, Divider, Row, Col, Button, Icon} from 'antd'
+import ClientForm from "./ClientForm";
 class ClientsList extends Component{
     constructor(props) {
         super(props);
@@ -28,14 +29,29 @@ class ClientsList extends Component{
                 },
             ]
         };
+        this.toggleModal = this.toggleModal.bind(this);
+    }
+
+    toggleModal(flag){
+        this.props.toggleModal(flag);
     }
 
     render(){
-        const {clients} = this.props;
+        const {clients, visibleModal} = this.props;
         const {columns} = this.state;
         return(
             <div style={{padding: '20px'}}>
+                <Row>
+                    <Col md={2} offset={21}>
+                        <Button type='primary' onClick={() => this.toggleModal(true)}>
+                            <Icon type='user-add'/>
+                            Agregar cliente
+                        </Button>
+                    </Col>
+                </Row>
+                <Divider />
                 <Table dataSource={clients} columns={columns}/>
+                <ClientForm visible={visibleModal} onCancel={() => this.toggleModal(false)}/>
             </div>
         );
     }

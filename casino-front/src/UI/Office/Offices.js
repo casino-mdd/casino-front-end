@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Proptypes from 'prop-types';
-import {List, Avatar, Card, Table, Row, Col} from 'antd';
+import {List, Avatar, Card, Table, Row, Col, Button, Icon, Divider} from 'antd';
+import OfficeForm from "./OfficeForm";
 
 const offices = [
     {
@@ -52,12 +53,37 @@ const office_columns = [
 ];
 
 class OfficesList extends Component{
+    constructor(props) {
+        super(props);
+        this.state={
+            visible: true
+        };
+        this.toggleModal = this.toggleModal.bind(this);
+    }
+
+    toggleModal(flag){
+        this.props.toggleModal(flag);
+    }
+
     render(){
-        console.log('Oficinas');
+        console.log('Oficinas', this.props);
+        const { visibleModal } = this.props;
+
         return(
-            <div style={{padding: '15px'}}>
-                <h1>Lista de oficinas</h1>
+
+            <div style={{padding: '20px'}}>
+                <Row>
+                    <Col md={2} offset={21}>
+                        <Button type='primary' onClick={()=> this.toggleModal(true)}>
+                            <Icon type='plus-circle'/>
+                            Agregar oficina
+                        </Button>
+                    </Col>
+                </Row>
+                <Divider />
                 <Table columns={office_columns} dataSource={offices}/>
+                <Divider />
+                <OfficeForm visible={visibleModal} onCancel={() => this.toggleModal(false)}/>
             </div>
         );
     }
