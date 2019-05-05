@@ -7,7 +7,7 @@ let client = null;
 
 export const initializeClient = function () {
     client = axios.create({
-        baseURL: 'https://hermes-services.azurewebsites.net/',
+        baseURL: 'http://dev.sobre5.com:8080/casino_mdd-war/webresources/',
         // baseURL: 'https://localhost:44335',
         headers:  { 'Authorization': 'Bearer '+ localStorage.getItem('token') }
     });

@@ -1,7 +1,8 @@
 import {UserReducerConstants as C} from "../Constants";
 
 const initialState = {
-    showCreationModal: false
+    showCreationModal: false,
+    users: []
 };
 
 export default function userReducer(state = initialState, action){
@@ -10,6 +11,12 @@ export default function userReducer(state = initialState, action){
             return {
                 ...state,
                 showCreationModal: action.flag
+            };
+
+        case C.SET_USERS_LIST:
+            return {
+                ...state,
+                users: action.users
             };
 
         default:
