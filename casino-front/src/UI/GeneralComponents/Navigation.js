@@ -69,7 +69,7 @@ export default class NavigationSider extends Component{
                 </SubMenu>
                 <Item>
                     <NavLink to={Routes.users}>
-                        Gestion usuarios
+                        Usuarios
                     </NavLink>
                 </Item>
             </Menu> 

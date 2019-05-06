@@ -34,7 +34,7 @@ const office_columns = [
         key: 'city',
     },
     {
-        title: '# Empleados',
+        title: '# Funcionarios',
         dataIndex: 'employees',
         key: 'employees',
     },

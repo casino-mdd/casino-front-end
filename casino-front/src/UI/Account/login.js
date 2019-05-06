@@ -42,7 +42,7 @@ class Login extends Component{
                 
                 <Form.Item label='Usuario'>
                     {getFieldDecorator('username', {
-                        rules: [{required: true, message: 'Ingrese un nombre de usuario'}]
+                        rules: [{required: true, message: 'Ingrese su nombre de usuario'}]
                     })
                     (
                         <Input placeholder='Usuario' xs={6}/>
@@ -51,7 +51,7 @@ class Login extends Component{
                 </Form.Item>
                 <Form.Item label='Contraseña'>
                     {getFieldDecorator('password', {
-                        rules: [{required: true, message: 'Ingrese la contraseña'}]
+                        rules: [{required: true, message: 'Ingrese su contraseña'}]
                     })
                     (
                         <Input placeholder='Contraseña' type='password'/>
