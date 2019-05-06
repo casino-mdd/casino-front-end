@@ -23,7 +23,7 @@ export const toggleCreationModal = (flag) => {
 
 export const fetchEmployees = () => {
     return dispatch => {
-        EmployeeServices.getEmployees()
+        EmployeeServices.getEmployeeList()
             .then(response => {
                 dispatch(setEmployeesList(response.data))
             })

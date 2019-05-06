@@ -1,4 +1,5 @@
 import {ClientsReducerConstants as C} from '../Constants';
+import ClientServices from '../../Services/ClientServices';
 
 const toggleModal = (flag) => {
     return {
@@ -20,12 +21,14 @@ export const toggleCreationModal = (flag) => {
     };
 };
 
-export const setClientsList = (clients) => {
-  return dispatch => {
-      dispatch(setClients(clients));
-  }
-};
-
-
 export const fetchClients = () => {
+    return dispatch => {
+        ClientServices.getClientList()
+            .then(response => {
+                dispatch(setClients(response.data));
+            })
+            .catch(err => {
+
+            });
+    };
 };

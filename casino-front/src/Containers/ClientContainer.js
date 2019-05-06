@@ -1,16 +1,18 @@
 import {connect} from 'react-redux';
-import { toggleCreationModal} from "../Store/Actions/ClientActions";
+import {toggleCreationModal, fetchClients} from "../Store/Actions/ClientActions";
 import ClientsList from "../UI/Client/Clients";
 
 const mapStateToProps = (state) => {
     return {
-        visibleModal: state.client.showCreationModal
+        visibleModal: state.client.showCreationModal,
+        clients: state.client.clients
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        toggleModal: (flag) => dispatch(toggleCreationModal(flag))
+        toggleModal: (flag) => dispatch(toggleCreationModal(flag)),
+        fetchClients: () => dispatch(fetchClients())
     };
 };
 

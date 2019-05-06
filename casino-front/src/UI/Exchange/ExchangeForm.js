@@ -1,5 +1,6 @@
 import React from 'react'
-import {Form, Input, Button, Typography, Select, Col, Row, Icon} from 'antd';
+import {Form, Input, Button,
+Typography, Select, Col, Row, Icon, Card, InputNumber, Collapse} from 'antd';
 
 const reward = [{
     value: 'reward1',
@@ -53,15 +54,38 @@ class RegExchange extends React.Component{
 
         //What is shown in display
         return(
-            <div align="left">
+            <div align="left" style={{padding: '20px'}}>
+
+                <Card title={'Info cliente'}>
+                    <Row>
+                        <Col md={8}>
+                            <Form.Item label="Cédula cliente" layout={'inline'}>
+                                <InputNumber style={{width: '100%'}}/>
+                            </Form.Item>
+                        </Col>
+                        <Col md={2}>
+                            <Button type={'primary'}>
+                                <Icon type={'search'}/>
+                                Consultar puntos
+                            </Button>
+                        </Col>
+                    </Row>
+                    <Collapse
+                        disabled={true}
+                    >
+                        <Collapse.Panel key={'info'} header={'Información personal'}>
+                        </Collapse.Panel>
+                        <Collapse.Panel key={'points'} header={'Información puntos'}>
+                        </Collapse.Panel>
+                    </Collapse>
+                </Card>
                 <br/>
                 <center>
                 <Title>Registro de intercambios</Title>
                 </center>
                 <br/>
 
-
-                <Form >
+                <Form layout={"inline"}>
                     <Row>
                     <Col md={7}>
                     </Col>
@@ -77,10 +101,12 @@ class RegExchange extends React.Component{
                             </Form.Item>
                         </Col>
                         <Col md={4}>
-                            <Button type={'primary'}>
-                                <Icon type={'search'}/>
-                                Consultar puntos
-                            </Button>
+                            <Form.Item>
+                                <Button type={'primary'}>
+                                    <Icon type={'search'}/>
+                                    Consultar puntos
+                                </Button>
+                            </Form.Item>
                         </Col>
                     </Row>
 

@@ -24,7 +24,7 @@ export const toggleCreationModal = (flag) => {
 
 export const fetchOffices = () => {
     return dispatch => {
-        OfficeServices.getOffices()
+        OfficeServices.getOfficeList()
             .then(response => {
                 dispatch(setOffices(response.data));
             })

@@ -11,7 +11,7 @@ function createClient(clientInfo){
 // LIST
 function getClientList(){
     return request({
-        url: 'client/list',
+        url: 'client/listdto',
         method: 'GET'
     });
 }

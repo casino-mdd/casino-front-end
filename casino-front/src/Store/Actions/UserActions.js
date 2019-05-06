@@ -8,6 +8,13 @@ const toggleModal = (flag) => {
     };
 };
 
+const setUsers = (users) => {
+    return {
+        type: C.SET_USERS_LIST,
+        users
+    };
+};
+
 export const toggleCreationModal = (flag) =>  {
     return dispatch => {
         dispatch(toggleModal(flag));
@@ -22,4 +29,10 @@ export const signIn = (userInfo) => {
       .catch(err => {
 
       });
+};
+
+export const fetchUsers = () => {
+    return dispatch => {
+
+    };
 };

@@ -32,6 +32,10 @@ class ClientsList extends Component{
         this.toggleModal = this.toggleModal.bind(this);
     }
 
+    componentDidMount(){
+        this.props.fetchClients();
+    }
+
     toggleModal(flag){
         this.props.toggleModal(flag);
     }
@@ -58,18 +62,15 @@ class ClientsList extends Component{
 }
 
 ClientsList.propTypes = {
-    clients: PropTypes.array
+    clients: PropTypes.array,
+    fetchClients: PropTypes.func,
+    visibleModal: PropTypes.bool
 };
 
 ClientsList.defaultProps = {
-    clients: [
-        {
-            name: 'Alvaro Rodriguez',
-            age: 24,
-            email: 'aldrodriguezca@unal.edu.co',
-            phone: '312312312'
-        }
-    ]
+    clients: [],
+    fetchClients : f => f,
+    visibleModal: false
 };
 
 export default ClientsList;
