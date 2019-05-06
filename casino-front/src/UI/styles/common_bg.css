@@ -1,11 +1,11 @@
-.sign-in-background-crop {
+.background-crop {
     top: 0;
     left: 0;
     z-index: -1;
     position: fixed;
-  }
+}
 
-  .sign-in-background{
+.background{
     width: 100%;
     object-fit: contain;
     background-position: center;
@@ -13,18 +13,18 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-  }
+}
 
-  .sign-in-form{
-    width: 400px;
+.list-style{
+    width: 100%;
     padding: 45px 40px 45px 40px !important;
 
-    top: 50%;
-    left: 50%;
+    top: 36%;
+    left: 13%;
     margin: -220px 0 0 -200px !important;
     position: absolute;
-  
+
     border-radius: 4px;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.5);
     box-shadow: 0 6px 10px 7px rgba(0, 0, 0, 0.2) !important;
-  }
+}

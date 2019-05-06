@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Typography} from 'antd/lib/index';
+import '../styles/common_bg.css'
+import casinoBackGround from '../../assets/img/casinoBG.jpg';
 
 import {Table} from 'antd'
 
@@ -43,10 +45,15 @@ class SalesList extends Component{
         const { Title } = Typography;
         return(
             <div style={{padding: '20px'}}>
-            <br/>
-                    <Title>Reporte de ventas</Title>
-            <br/>
-                <Table dataSource={sales} columns={columns}/>
+                <div className='list-style'>
+                    <div className='background-crop'>
+                        <img className='background' alt='background' src={casinoBackGround} />
+                    </div>
+                    <br/>
+                        <Title>Reporte de ventas</Title>
+                    <br/>
+                    <Table dataSource={sales} columns={columns}/>
+                </div>
             </div>
         );
     }
