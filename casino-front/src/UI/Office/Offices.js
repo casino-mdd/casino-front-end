@@ -3,26 +3,6 @@ import Proptypes from 'prop-types';
 import {List, Avatar, Card, Table, Row, Col, Button, Icon, Divider} from 'antd';
 import OfficeForm from "./OfficeForm";
 
-const offices = [
-    {
-        id_office: 1,
-        address: 'Calle falsa 123',
-        city:'Bogota',
-        name: 'Sucursal 1',
-        phone: '123123',
-        employess: 123,
-        machines: 123
-    },
-    {
-        id_office: 2,
-        address: 'Calle falsa 123',
-        city:'Bogota',
-        name: 'Sucursal 1',
-        phone: '123123',
-        employess: 123,
-        machines: 123
-    }
-];
 
 const office_columns = [
     {
@@ -34,12 +14,7 @@ const office_columns = [
         title: 'Ciudad',
         dataIndex: 'city',
         key: 'city',
-    },
-    {
-        title: 'Dirección',
-        dataIndex: 'address',
-        key: 'address',
-    },
+    }
 ];
 
 class OfficesList extends Component{
@@ -96,6 +71,5 @@ OfficesList.defaultProps = {
     fetchOffices: f => f,
     visibleModal: false
 };
-
 
 export default OfficesList;

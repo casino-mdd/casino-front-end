@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Table} from 'antd';
+import {Typography} from 'antd/lib/index';
 
 class ExchangeReport extends Component{
     constructor(props){
@@ -34,8 +35,12 @@ class ExchangeReport extends Component{
     render(){
         const {exchangeReport} = this.props;
         const {columns} = this.state;
+        const { Title } = Typography;
         return(
             <div style={{padding: '20px'}}>
+                <br/>
+                <Title>Reporte de intercambios</Title>
+                <br/>
                 <Table dataSource={exchangeReport} columns={columns}/>
             </div>
         );

@@ -53,21 +53,26 @@ class RegExchange extends React.Component{
 
         //What is shown in display
         return(
-            <div align="center">
+            <div align="left">
                 <br/>
-                <Title>Registro de intercambio de puntos</Title>
+                <center>
+                <Title>Registro de intercambios</Title>
+                </center>
                 <br/>
+
 
                 <Form >
                     <Row>
-                        <Col md={20}>
+                    <Col md={7}>
+                    </Col>
+                        <Col md={10}>
                             <Form.Item
                                 label="Cédula cliente"
                             >
                                 {getFieldDecorator('id', {
                                     rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
                                 })(
-                                    <Input />
+                                    <Input type="number"/>
                                 )}
                             </Form.Item>
                         </Col>
@@ -79,25 +84,36 @@ class RegExchange extends React.Component{
                         </Col>
                     </Row>
 
-                    <Form.Item
-                        label="Premio deseado"
-                    >
-                        {getFieldDecorator('reward', {
-                            rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
-                        })(
-                            <Select placeholder='Seleccione' options={reward} >
-                                {reward.map((option, i) => (
-                                    <Select.Option value={option.value} key={i}>
-                                        {option.label}
-                                    </Select.Option>
-                                ))}
-                            </Select>
-                        )}
-                    </Form.Item>
-                    <Form.Item>
-                        <Button  type="primary" htmlType="submit">Registrar</Button>
-                    </Form.Item>
-
+                    <Row>
+                        <Col md={7}>
+                        </Col>
+                        <Col md={10}>
+                            <Form.Item
+                                label="Premio deseado"
+                            >
+                                {getFieldDecorator('reward', {
+                                    rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
+                               })(
+                                  <Select placeholder='Seleccione' options={reward} >
+                                        {reward.map((option, i) => (
+                                         <Select.Option value={option.value} key={i}>
+                                               {option.label}
+                                          </Select.Option>
+                                     ))}
+                                 </Select>
+                             )}
+                            </Form.Item>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={15}>
+                        </Col>
+                        <Col md={1}>
+                            < Form.Item>
+                                <Button  type="primary" htmlType="submit">Registrar</Button>
+                            </Form.Item>
+                        </Col>
+                    </Row>
                 </Form>
 
             </div>

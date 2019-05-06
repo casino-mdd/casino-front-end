@@ -12,6 +12,15 @@ const yesno = [{
 }
 ];
 
+const role = [{
+    value: 'admin',
+    label: 'Administrador',
+}, {
+    value: 'employee',
+    label: 'Funcionario',
+}
+];
+
 class UserForm extends React.Component{
     state = {
         confirmDirty: false,
@@ -84,7 +93,7 @@ class UserForm extends React.Component{
                             {getFieldDecorator('id', {
                                 rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
                             })(
-                                <Input />
+                                <Input type="number"/>
                             )}
                         </Form.Item>
                         <Form.Item
@@ -123,10 +132,25 @@ class UserForm extends React.Component{
                             )}
                         </Form.Item>
                         <Form.Item
+                            label="Permisos"
+                                >
+                         {getFieldDecorator('rights', {
+                             rules: [{ required: true, message: 'Por favor seleccione una opción' }],
+                            })(
+                                <Select placeholder='Seleccione' options={role} >
+                                    {role.map((option, i) => (
+                                        <Select.Option value={option.value} key={i}>
+                                            {option.label}
+                                        </Select.Option>
+                                    ))}
+                                </Select>
+                            )}
+                            </Form.Item>
+                        <Form.Item
                             label="Activar usuario"
                         >
                             {getFieldDecorator('activate', {
-                                rules: [{ required: true, message: 'Por favor confirme su contraseña' }],
+                                rules: [{ required: true, message: 'Por favor seleccione una opción' }],
                             })(
                                 <Select placeholder='Seleccione' options={yesno} >
                                     {yesno.map((option, i) => (
