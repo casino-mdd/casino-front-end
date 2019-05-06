@@ -1,6 +1,15 @@
 import request from './RequestWrapper';
 
-function getOffices(){
+// NEW
+function createOffice(officeInfo){
+    return request({
+        url: 'office/create',
+        method: 'POST',
+        data: officeInfo
+    });
+}
+// LIST
+function getOfficeList(){
     return request({
         url: 'office/list',
         method: 'GET'
@@ -8,5 +17,6 @@ function getOffices(){
 }
 
 export default {
-    getOffices
+    createOffice,
+    getOfficeList
 };

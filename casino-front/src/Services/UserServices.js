@@ -1,5 +1,21 @@
 import request from './RequestWrapper';
 
+//NEW
+function createUser( userInfo ){
+    return request({
+        url: 'userAccount/create',
+        method: 'POST',
+        data: userInfo
+    });
+}
+// LIST
+function getUserList(){
+    return request({
+        url: 'userAccount/list',
+        method: 'GET'
+    });
+}
+//LOGIN
 function signIn( userInfo ){
     return request({
         url: 'userAccount/login',
@@ -8,14 +24,9 @@ function signIn( userInfo ){
     });
 }
 
-function createUser( userInfo ){
-    return request({
-        url: '',
-        method: 'POST',
-        data: userInfo
-    });
-}
 
 export default {
-    signIn, createUser
+    createUser,
+    getUserList,
+    signIn
 };

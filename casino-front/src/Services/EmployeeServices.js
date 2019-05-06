@@ -1,12 +1,6 @@
 import request from './RequestWrapper';
 
-function getEmployees(){
-    return request({
-        url: 'employee/list',
-        method: 'GET'
-    });
-}
-
+// NEW
 function createEmployee(employeeInfo){
     return request({
         url: 'employee/create',
@@ -14,7 +8,34 @@ function createEmployee(employeeInfo){
         data: employeeInfo
     });
 }
+// LIST
+function getEmployeeList(){
+    return request({
+        url: 'employee/list',
+        method: 'GET'
+    });
+}
+// FIND
+function getEmployee(identification_number){
+    return request({
+        url: 'employee/find',
+        param: identification_number,
+        method: 'GET'
+    });
+}
+//EDIT
+function updateEmployee(identification_number,employeeInfo){
+    return request({
+        url: 'employee/update',
+        param: identification_number,
+        method: 'PUT',
+        data: employeeInfo
+    });
+}
 
 export default {
-    getEmployees
+    createEmployee,
+    getEmployeeList,
+    getEmployee,
+    updateEmployee
 };
