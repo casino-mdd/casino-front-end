@@ -1,5 +1,7 @@
 import React from 'react'
 import {Form, Input, Button, Typography, Select, Col, Row, Icon} from 'antd';
+import '../styles/forms_bg.css'
+import casinoBackGround from '../../assets/img/casinoBG.jpg';
 
 const reward = [{
     value: 'reward1',
@@ -54,14 +56,15 @@ class RegExchange extends React.Component{
         //What is shown in display
         return(
             <div align="left">
+                <Form className='trx-form' >
                 <br/>
                 <center>
-                <Title>Registro de intercambios</Title>
+                    <h1>Registro de intercambios</h1>
                 </center>
                 <br/>
-
-
-                <Form >
+                    <div className='trx-background-crop'>
+                        <img className='trx-background' alt='background' src={casinoBackGround} />
+                    </div>
                     <Row>
                     <Col md={7}>
                     </Col>

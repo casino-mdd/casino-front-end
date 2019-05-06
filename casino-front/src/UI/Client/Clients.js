@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Table, Divider, Row, Col, Button, Icon} from 'antd'
 import ClientForm from "./ClientForm";
-import '../styles/common_bg.css'
+import '../styles/lists_bg.css'
 import casinoBackGround from '../../assets/img/casinoBG.jpg';
 
 class ClientsList extends Component{

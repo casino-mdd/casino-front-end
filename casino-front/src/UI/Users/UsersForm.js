@@ -76,19 +76,18 @@ class UserForm extends React.Component{
             },
         };
 
-
         //What is shown in display
         return(
-            <Modal
+            <Modal title={title}
                 visible={visible}
                 onCancel={onCancel}
-            >
+                >
                 <div >
 
 
                     <Form   >
                         <Form.Item
-                            label="Cédula empleado"
+                            label="Cédula funcionario"
                         >
                             {getFieldDecorator('id', {
                                 rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],

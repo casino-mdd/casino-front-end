@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Button, Col, Divider, Icon, Row, Table} from 'antd';
 import EmployeeForm from './EmployeeForm'
-import '../styles/common_bg.css'
+import '../styles/lists_bg.css'
 import casinoBackGround from '../../assets/img/casinoBG.jpg';
 
 class EmployeesList extends Component{
@@ -54,7 +54,7 @@ class EmployeesList extends Component{
                         <Col md={2} offset={21}>
                             <Button type='primary' onClick={() => this.toggleModal(true)}>
                                 <Icon type='user-add'/>
-                                Agregar empleado
+                                Agregar funcionario
                             </Button>
                         </Col>
                     </Row>

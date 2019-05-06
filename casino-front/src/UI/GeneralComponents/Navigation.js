@@ -23,7 +23,7 @@ export default class NavigationSider extends Component{
                 </Item>
                 <Item>
                     <NavLink to={Routes.employees}>
-                        Empleados
+                        Funcionarios
                     </NavLink>
                 </Item>
                 <Item>
@@ -34,7 +34,7 @@ export default class NavigationSider extends Component{
                 <SubMenu title={<span>Ventas</span>}>
                     <Item>
                         <NavLink to={Routes.salesRegister}>
-                            Registro ventas
+                            Registrar venta
                         </NavLink>
                     </Item>
                     <Item>
@@ -46,7 +46,7 @@ export default class NavigationSider extends Component{
                 <SubMenu title={<span>Intercambios</span>}>
                     <Item>
                         <NavLink to={Routes.exchangeRegister}>
-                            Redimir premio
+                            Registrar intercambio
                         </NavLink>
                     </Item>
                     <Item>
@@ -58,7 +58,7 @@ export default class NavigationSider extends Component{
                 <SubMenu title={<span>Premios</span>}>
                     <Item>
                         <NavLink to={Routes.rewardRegister}>
-                            Registro premios
+                            Registrar premios
                         </NavLink>
                     </Item>
                     <Item>

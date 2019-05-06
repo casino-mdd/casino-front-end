@@ -32,7 +32,10 @@ class Login extends Component{
         const {getFieldDecorator} = this.props.form;
         return(
             <Form className='sign-in-form' onSubmit={this.handleSubmit}>
-                <h1>UN Casino iniciar sesión</h1>
+                <br/>
+                <h1>UN Casino </h1>
+                <h1>Iniciar sesión</h1>
+                <br/>
                 <div className='sign-in-background-crop'>
                     <img className='sign-in-background' alt='background' src={casinoBackGround} />
                 </div>
