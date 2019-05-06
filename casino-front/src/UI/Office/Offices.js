@@ -36,20 +36,10 @@ const office_columns = [
         key: 'city',
     },
     {
-        title: 'Phone',
-        dataIndex: 'phone',
-        key: 'phone',
+        title: 'Dirección',
+        dataIndex: 'address',
+        key: 'address',
     },
-    {
-        title: '# Empleados',
-        dataIndex: 'employees',
-        key: 'employees',
-    },
-    {
-        title: '# Máquinas',
-        dataIndex: 'machines',
-        key: 'machines',
-    }
 ];
 
 class OfficesList extends Component{
@@ -61,14 +51,18 @@ class OfficesList extends Component{
         this.toggleModal = this.toggleModal.bind(this);
     }
 
+    componentDidMount(){
+        this.props.fetchOffices();
+    }
+
     toggleModal(flag){
         this.props.toggleModal(flag);
     }
 
     render(){
         console.log('Oficinas', this.props);
-        const { visibleModal } = this.props;
-
+        const { visibleModal, offices } = this.props;
+        console.log('Offices', offices);
         return(
 
             <div style={{padding: '20px'}}>
@@ -88,5 +82,20 @@ class OfficesList extends Component{
         );
     }
 }
+
+OfficesList.propTypes = {
+    offices: Proptypes.array,
+    toggleModal: Proptypes.func,
+    fetchOffices: Proptypes.func,
+    visibleModal: Proptypes.bool
+};
+
+OfficesList.defaultProps = {
+    offices: [],
+    toggleModal: f => f,
+    fetchOffices: f => f,
+    visibleModal: false
+};
+
 
 export default OfficesList;

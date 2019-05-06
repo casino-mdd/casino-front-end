@@ -1,5 +1,12 @@
 import request from './RequestWrapper';
 
-export default {
+function getOffices(){
+    return request({
+        url: 'office/list',
+        method: 'GET'
+    });
+}
 
+export default {
+    getOffices
 };

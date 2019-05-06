@@ -18,6 +18,7 @@ export default function officeReducer(state = initialState, action){
                 ...state,
                 offices: action.offices
             };
+
         default:
             return state;
     }

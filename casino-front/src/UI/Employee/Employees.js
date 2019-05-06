@@ -33,6 +33,10 @@ class EmployeesList extends Component{
         this.toggleModal = this.toggleModal.bind(this);
     }
 
+    componentDidMount(){
+        this.props.fetchEmployees();
+    }
+
     toggleModal(flag){
         this.props.toggleModal(flag);
     }
@@ -62,20 +66,17 @@ class EmployeesList extends Component{
 }
 
 EmployeesList.propTypes = {
+    visibleModal: PropTypes.bool,
     employees: PropTypes.array,
-    visibleModal: PropTypes.bool
+    toggleModal: PropTypes.func,
+    fetchEmployees: PropTypes.func
 };
 
-EmployeesList.defaultProps = {
-    employees: [
-        {
-            employeeName: 'Pepe Perez',
-            email: 'pepePerez@email.com',
-            admissionDate: new Date().toLocaleDateString(),
-            office: 'Chico Norte'
-        }
-    ],
-    visibleModal: false
+EmployeeForm.defaultProps = {
+    visibleModal: false,
+    employees: [],
+    toggleModal: f => f,
+    fetchEmployees: f => f
 };
 
 export default EmployeesList;
