@@ -11,14 +11,14 @@ function createClient(clientInfo){
 // LIST
 function getClientList(){
     return request({
-        url: 'client/list',
+        url: 'client/listdto',
         method: 'GET'
     });
 }
 // FIND
 function getClient(identification_number){
     return request({
-        url: 'client/find',
+        url: 'client/finddto',
         param: identification_number,
         method: 'GET'
     });
