@@ -1,12 +1,21 @@
 import React, { Component } from 'react'
-import { Layout, Menu } from 'antd'
+import { Layout, Menu, Button, Icon } from 'antd'
 import Routes from '../../utils/routes';
 import {NavLink} from 'react-router-dom';
 const { Header, Sider, Content } = Layout;
 const  Item  = Menu.Item;
 const SubMenu = Menu.SubMenu;
 
-export default class NavigationSider extends Component{
+export default class NavigationBar extends Component{
+    constructor(props) {
+        super(props);
+        this.handleSignOut = this.handleSignOut.bind(this);
+    }
+
+    handleSignOut(){
+        this.props.signOut();
+    }
+
     render(){
         return(
             <Menu theme='dark' mode='horizontal'>
@@ -71,6 +80,11 @@ export default class NavigationSider extends Component{
                     <NavLink to={Routes.users}>
                         Gestion usuarios
                     </NavLink>
+                </Item>
+                <Item>
+                    <Button onClick={this.handleSignOut}>
+                        <Icon type={'logout'} />
+                    </Button>
                 </Item>
             </Menu> 
         )

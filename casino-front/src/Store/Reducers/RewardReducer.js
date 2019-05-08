@@ -4,7 +4,7 @@ const initialState = {
     rewards: []
 };
 
-export function rewardReducer(state = initialState, action){
+export default function rewardReducer(state = initialState, action){
     switch (action.type) {
         case C.SET_REWARDS_LIST:
             return{

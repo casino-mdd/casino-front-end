@@ -1,5 +1,6 @@
 import {ClientsReducerConstants as C} from '../Constants';
 import ClientServices from '../../Services/ClientServices';
+import {WarningMsg} from '../../UI/GeneralComponents/Messages';
 
 const toggleModal = (flag) => {
     return {
@@ -29,6 +30,20 @@ export const fetchClients = () => {
             })
             .catch(err => {
 
+            });
+    };
+};
+
+
+export const createClient = (clientInfo) => {
+    return dispatch => {
+        ClientServices.createClient(clientInfo)
+            .then(response => {
+                dispatch(toggleModal(false));
+                dispatch(fetchClients());
+            })
+            .catch(err => {
+                WarningMsg('Error creando cliente');
             });
     };
 };

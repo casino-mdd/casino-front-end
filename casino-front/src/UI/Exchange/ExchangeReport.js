@@ -13,11 +13,7 @@ class ExchangeReport extends Component{
                     dataIndex: 'client',
                     key: 'client'
                 },
-                {
-                    title: 'Premio',
-                    dataIndex: 'reward',
-                    key: 'reward'
-                },
+
                 {
                     title: 'Empleado encargado',
                     dataIndex: 'employee',
@@ -32,8 +28,15 @@ class ExchangeReport extends Component{
         };
     }
 
+
+    componentDidMount(){
+        this.props.fetchExchanges();
+    }
+
     render(){
         const {exchangeReport} = this.props;
+        const {exchanges} = this.props;
+        console.log('exchanges', exchanges);
         const {columns} = this.state;
         const { Title } = Typography;
         return(
@@ -41,7 +44,7 @@ class ExchangeReport extends Component{
                 <br/>
                 <Title>Reporte de intercambios</Title>
                 <br/>
-                <Table dataSource={exchangeReport} columns={columns}/>
+                <Table dataSource={exchanges} columns={columns}/>
             </div>
         );
     }

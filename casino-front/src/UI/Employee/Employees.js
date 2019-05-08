@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Button, Col, Divider, Icon, Row, Table} from 'antd';
+import {Button, Col, Divider, Icon, Row, Table, Select} from 'antd';
 import EmployeeForm from './EmployeeForm'
 
 class EmployeesList extends Component{
@@ -10,8 +10,8 @@ class EmployeesList extends Component{
             columns: [
                 {
                     title: 'Nombre',
-                    dataIndex: 'employeeName',
-                    key: 'employeeName',
+                    dataIndex: 'name',
+                    key: 'name',
                 },
                 {
                     title: 'Email',
@@ -35,6 +35,7 @@ class EmployeesList extends Component{
 
     componentDidMount(){
         this.props.fetchEmployees();
+        this.props.fetchOffices();
     }
 
     toggleModal(flag){
@@ -43,7 +44,7 @@ class EmployeesList extends Component{
 
     render(){
         console.log('Employees', this.props);
-        const { employees, visibleModal } = this.props;
+        const { employees, visibleModal, offices, createEmployee } = this.props;
         const { columns } = this.state;
 
         return(
@@ -59,7 +60,9 @@ class EmployeesList extends Component{
                 <Divider />
                 <Table dataSource={employees} columns={columns}/>
 
-                <EmployeeForm visible={visibleModal} onCancel={() => this.toggleModal(false)}/>
+                <EmployeeForm visible={visibleModal} onCancel={() => this.toggleModal(false)} offices={offices}
+                    createEmployee={createEmployee}
+                />
             </div>
         );
     }
@@ -69,14 +72,18 @@ EmployeesList.propTypes = {
     visibleModal: PropTypes.bool,
     employees: PropTypes.array,
     toggleModal: PropTypes.func,
-    fetchEmployees: PropTypes.func
+    fetchEmployees: PropTypes.func,
+    fetchOffices: PropTypes.func,
+    offices: PropTypes.array
 };
 
 EmployeeForm.defaultProps = {
     visibleModal: false,
     employees: [],
     toggleModal: f => f,
-    fetchEmployees: f => f
+    fetchEmployees: f => f,
+    fetchOffices: f => f,
+    offices: []
 };
 
 export default EmployeesList;

@@ -2,8 +2,9 @@ import request from './RequestWrapper';
 
 // NEW
 function createEmployee(employeeInfo){
+    console.log('creating employee', employeeInfo);
     return request({
-        url: 'employee/create',
+        url: 'employee/createdto',
         method: 'POST',
         data: employeeInfo
     });
@@ -11,7 +12,7 @@ function createEmployee(employeeInfo){
 // LIST
 function getEmployeeList(){
     return request({
-        url: 'employee/list',
+        url: 'employee/listdto',
         method: 'GET'
     });
 }

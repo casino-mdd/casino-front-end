@@ -1,7 +1,8 @@
 import {EmployeesReducerConstants as C} from '../Constants';
 const initialState = {
     showCreationModal: false,
-    employees: []
+    employees: [],
+    offices: []
 };
 export default function EmployeeReducer(state = initialState, action){
     switch (action.type) {
@@ -15,6 +16,12 @@ export default function EmployeeReducer(state = initialState, action){
             return {
                 ...state,
                 employees: action.employees
+            };
+
+        case C.SET_OFFICES_EMPLOYEES_LIST:
+            return {
+                ...state,
+                offices: action.offices
             };
 
         default:

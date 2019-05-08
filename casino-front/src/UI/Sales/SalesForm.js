@@ -1,25 +1,52 @@
 import React from 'react'
 import {Form, Input, Button, Typography, Select} from 'antd/lib/index';
+import SalesServuces from '../../Services/SaleServices';
 
 const payment = [{
-    value: 'Cash',
+    value: 'Efectivo',
     label: 'Efectivo',
 }, {
-    value: 'Credit',
-    label: 'Tarjeta de crédito',
+    value: 'Tarjeta credito',
+    label: 'Tarjeta credito',
 },
     {
-        value: 'Debit',
-        label: 'Tarjeta débito',
+        value: 'Tarjeta debito',
+        label: 'Tarjeta debito',
     }
 ];
 
 class SaleRegister extends React.Component{
-    state = {
-        confirmDirty: false,
-        //  autoCompleteResult: [],
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            confirmDirty: false,
+            //  autoCompleteResult: [],
+        };
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
 
+
+
+    handleSubmit(e){
+        e.preventDefault();
+        this.props.form.validateFieldsAndScroll((err, values) => {
+            if(!err){
+                console.log(values);
+                const { userInfo } = this.props;
+                console.log('user info', userInfo);
+                const saleInfo = {
+                    token: values.token,
+                    cost: values.cost,
+                    paymentMethod: values.payment,
+                    idenNumClient: values.clientIdentification,
+                    idenNumEmployee: userInfo.userIdentification
+                };
+                SalesServuces.registerSale(saleInfo);
+            }else{
+
+            }
+        })
+    }
 
     render(){
         const { getFieldDecorator } = this.props.form;
@@ -57,11 +84,11 @@ class SaleRegister extends React.Component{
                 <Title>Registro de ventas</Title>
                 <br/>
 
-                <Form  {...formItemLayout} >
+                <Form  {...formItemLayout} onSubmit={this.handleSubmit}>
                     <Form.Item
                         label="Cédula cliente"
                     >
-                        {getFieldDecorator('id', {
+                        {getFieldDecorator('clientIdentification', {
                             rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
                         })(
                             <Input type="number"/>

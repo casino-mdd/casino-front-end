@@ -1,27 +1,52 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Form, Input, Button, DatePicker, Typography, Select, Modal} from 'antd';
+import {WarningMsg} from '../GeneralComponents/Messages';
 
 const gender = [{
-    value: 'Female',
+    value: 'F',
     label: 'Femenino',
 }, {
-    value: 'Male',
+    value: 'M',
     label: 'Masculino',
-},
-    {
-        value: 'NoSpec',
-        label: 'Sin especificar',
-    }
+}
 
 ];
 
 class ClientForm extends React.Component{
-    state = {
-        confirmDirty: false,
-        //  autoCompleteResult: [],
-    };
+    constructor(props) {
+        super(props);
 
+        this.state = {
+            confirmDirty: false,
+            //  autoCompleteResult: [],
+        };
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleSubmit(e){
+        e.preventDefault();
+
+        this.props.form.validateFieldsAndScroll((err, values) => {
+            if(!err){
+                console.log(values);
+                const clientInfo = {
+                    age: values.age,
+                    email: values.email,
+                    phone: values.phone,
+                    identificationNumber: values.id,
+                    name: values.name,
+                    surname: values.lastname,
+                    gender:  values.gender
+                };
+
+                this.props.createClient(clientInfo);
+            }else{
+                WarningMsg('Hay campos por validar');
+            }
+        })
+    }
 
     render(){
         const { getFieldDecorator } = this.props.form;
@@ -49,12 +74,17 @@ class ClientForm extends React.Component{
             rules: [{ type: 'object', required: true, message: 'Por favor seleccione una fecha' }],
         };
 
-
         //What is shown in display
         return(
             <Modal title={title}
                 visible={visible}
                 onCancel={onCancel}
+                   footer={[
+                       <Button key="back" onClick={onCancel}>Cancelar</Button>,
+                       <Button key="submit"  htmlType={'submit'} type="primary" onClick={this.handleSubmit}>
+                           Registrar
+                       </Button>,
+                   ]}
             >
                 <div>
                     <Form  layout={"vertical"} >
@@ -86,10 +116,12 @@ class ClientForm extends React.Component{
                             )}
                         </Form.Item>
                         <Form.Item
-                            label="Fecha de nacimiento"
+                            label="Edad"
                         >
-                            {getFieldDecorator('date-picker', config)(
-                                <DatePicker  placeholder='Fecha'/>
+                            {getFieldDecorator('age', {
+                            rules: [{required: true,  message: 'Este campo es obligatorio'}]
+                            })(
+                                <Input type={'number'} style={{width: '100%'}}/>
                             )}
                         </Form.Item>
                         <Form.Item
@@ -129,9 +161,6 @@ class ClientForm extends React.Component{
                             })(
                                 <Input type="number"/>
                             )}
-                        </Form.Item>
-                        <Form.Item {...tailFormItemLayout}>
-                            <Button  type="primary" htmlType="submit">Registrar</Button>
                         </Form.Item>
 
                     </Form>

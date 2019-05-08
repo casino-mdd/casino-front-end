@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Form, Input,  Button,  Typography, Modal} from 'antd';
+import {WarningMsg} from '../GeneralComponents/Messages';
 import 'antd/dist/antd.css';
 
 class OfficeForm extends React.Component{
@@ -10,7 +11,28 @@ class OfficeForm extends React.Component{
         confirmDirty: false,
         //  autoCompleteResult: [],
      };
+     this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    handleSubmit(e){
+        e.preventDefault();
+        this.props.form.validateFieldsAndScroll((err, values) => {
+            if(!err){
+                console.log('office', values);
+                const officeInfo = {
+                    address: values.address,
+                    city: values.city,
+                    name: values.name
+                };
+
+                this.props.createOffice(officeInfo);
+            }else{
+                WarningMsg('Hay campos por validar');
+            }
+
+        });
+    }
+
     render(){
         const { getFieldDecorator } = this.props.form;
 
@@ -47,6 +69,12 @@ class OfficeForm extends React.Component{
             <Modal title={title}
                 visible={visible}
                 onCancel={onCancel}
+               footer={[
+                   <Button key="back" onClick={onCancel}>Cancelar</Button>,
+                   <Button key="submit"  htmlType={'submit'} type="primary" onClick={this.handleSubmit}>
+                       Registrar
+                   </Button>,
+               ]}
             >
                 <div>
                     <Form layout={"vertical"}>
@@ -78,10 +106,6 @@ class OfficeForm extends React.Component{
                                 <Input />
                             )}
                         </Form.Item>
-                        <Form.Item {...tailFormItemLayout}>
-                            <Button  type="primary" htmlType="submit">Registrar</Button>
-                        </Form.Item>
-
                     </Form>
 
                 </div>

@@ -1,5 +1,6 @@
 import {OfficeReducerConstants as C} from '../Constants';
 import OfficeServices from '../../Services/OfficeServices';
+import {SuccessMsg, WarningMsg} from '../../UI/GeneralComponents/Messages';
 
 const toggleModal = (flag) =>{
     return {
@@ -30,6 +31,20 @@ export const fetchOffices = () => {
             })
             .catch(err => {
 
+            });
+    };
+};
+
+export const createOffice = (officeInfo) => {
+    return dispatch => {
+        OfficeServices.createOffice(officeInfo)
+            .then(response => {
+                SuccessMsg('Oficina creada exitosamente');
+                dispatch((toggleModal(false)));
+                dispatch(fetchOffices());
+            })
+            .catch(err => {
+                WarningMsg('Problema creando la oficina');
             });
     };
 };

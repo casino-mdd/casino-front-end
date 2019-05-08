@@ -3,7 +3,7 @@ import request from './RequestWrapper';
 // NEW
 function createClient(clientInfo){
     return request({
-        url: 'client/create',
+        url: 'client/createdto',
         method: 'POST',
         data: clientInfo
     });

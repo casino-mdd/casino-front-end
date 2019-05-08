@@ -52,7 +52,9 @@ class OfficesList extends Component{
                 <Divider />
                 <Table columns={office_columns} dataSource={offices}/>
                 <Divider />
-                <OfficeForm visible={visibleModal} onCancel={() => this.toggleModal(false)}/>
+                <OfficeForm visible={visibleModal} onCancel={() => this.toggleModal(false)}
+                    createOffice={this.props.createOffice}
+                />
             </div>
         );
     }

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Form, Input, Button, Card, Col, Row, message } from 'antd';
+import {Redirect} from 'react-router-dom';
 import casinoBackGround from '../../assets/img/casinoBG.jpg';
 import '../styles/loginStyles.css'
-import {signIn} from '../../Store/Actions/UserActions';
+import Routes from '../../utils/routes';
+
 class Login extends Component{
     constructor(props){
         super(props);
@@ -20,7 +22,7 @@ class Login extends Component{
                     username: values.username,
                     password: values.password
                 };
-                signIn(userInfo)
+                this.props.signIn(userInfo)
             }else{
                 message.warning('Campos invalidos');
             }
@@ -30,13 +32,19 @@ class Login extends Component{
 
     render(){
         const {getFieldDecorator} = this.props.form;
+        const {isSigned} = this.props;
         return(
-            <Form className='sign-in-form' onSubmit={this.handleSubmit}>
+            <div>
+                {isSigned === true &&
+                    <Redirect to={Routes.offices}/>
+                }
+                {isSigned === false &&
+                    <Form className='sign-in-form' onSubmit={this.handleSubmit}>
                 <h1>UN Casino iniciar sesión</h1>
                 <div className='sign-in-background-crop'>
                     <img className='sign-in-background' alt='background' src={casinoBackGround} />
                 </div>
-                
+
                 <Form.Item label='Usuario'>
                     {getFieldDecorator('username', {
                         rules: [{required: true, message: 'Ingrese un nombre de usuario'}]
@@ -61,6 +69,8 @@ class Login extends Component{
                     </Button>
                 </Form.Item>
             </Form>
+                }
+            </div>
         );
     }
 }

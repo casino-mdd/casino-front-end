@@ -4,7 +4,7 @@ const initialState = {
     sales: []
 };
 
-export function saleReducer(state = initialState, action){
+export default function saleReducer(state = initialState, action){
     switch (action.type) {
         case C.SET_SALES_LIST:
             return {

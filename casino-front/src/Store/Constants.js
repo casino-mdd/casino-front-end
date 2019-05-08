@@ -5,7 +5,8 @@ export const OfficeReducerConstants = {
 
 export const EmployeesReducerConstants = {
     TOGGLE_CREATE_EMPLOYEE_MODAL: 'TOGGLE_CREATE_EMPLOYEE_MODAL',
-    SET_EMPLOYEES_LIST: 'SET_EMPLOYEES_LIST'
+    SET_EMPLOYEES_LIST: 'SET_EMPLOYEES_LIST',
+    SET_OFFICES_EMPLOYEES_LIST: 'SET_OFFICES_EMPLOYEES_LIST'
 };
 
 export const ClientsReducerConstants = {
@@ -18,7 +19,8 @@ export const SalesReducerConstants = {
 };
 
 export const ExchangesReducerConstants = {
-    SET_EXCHANGES_LIST: 'SET_EXCHANGES_LIST'
+    SET_EXCHANGES_LIST: 'SET_EXCHANGES_LIST',
+    SET_CLIENT_INFO: 'SET_CLIENT_INFO'
 };
 
 export const UserReducerConstants = {
@@ -31,5 +33,5 @@ export const SessionReducerConstants = {
 };
 
 export const RewardReducerConstants = {
-    SET_REWARDS_LIST: 'SET_REWARDS_LIST'
+    SET_REWARDS_LIST: 'SET_REWARDS_LIST',
 };

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Form, Input, Button,
+import {Form, Input, Button, Table,
 Typography, Select, Col, Row, Icon, Card, InputNumber, Collapse} from 'antd';
 
 const reward = [{
@@ -16,12 +16,54 @@ const reward = [{
 ];
 
 class RegExchange extends React.Component{
-    state = {
-        confirmDirty: false,
-        //  autoCompleteResult: [],
-        queriedUser: false,
-        enoughPoints: false
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            confirmDirty: false,
+            //  autoCompleteResult: [],
+            queriedUser: false,
+            enoughPoints: false,
+            columns: [
+                {
+                    title: 'Cantidad de puntos',
+                    dataIndex: 'points',
+                    key: 'points'
+                },
+                {
+                    title: 'Fecha vencimiento',
+                    dataIndex: 'exp_date',
+                    key: 'exp_date'
+                }
+            ],
+            availableRewards: []
+        };
+        this.queryClientPoints = this.queryClientPoints.bind(this);
+        this.performExchange = this.performExchange.bind(this);
+    }
+
+    queryClientPoints(){
+        const clientIdentification = this.props.form.getFieldValue('clientIdentification');
+        console.log(clientIdentification);
+        this.setState({queriedUser: true})
+        const {userInfo, clientInfo} = this.props;
+        console.log('info for calling service', userInfo, clientIdentification);
+        this.props.getClientPoints(clientIdentification, userInfo.userIdentification);
+        console.log(this.props.clientInfo);
+    }
+
+    performExchange(){
+        const {userInfo} = this.props;
+        const clientIdentification = this.props.form.getFieldValue('clientIdentification');
+        const reward = this.props.form.getFieldValue('reward');
+        const exchangeInfo = {
+            idenNumClient: clientIdentification,
+            idenNumEmployee: userInfo.userIdentification,
+            idReward: reward
+        };
+
+        this.props.performExchange(exchangeInfo);
+    }
+
 
     render(){
         const { getFieldDecorator } = this.props.form;
@@ -49,98 +91,94 @@ class RegExchange extends React.Component{
                 },
             },
         };
+        const {queriedUser} = this.state;
+        const {clientInfo} = this.props;
 
-        const { Title } = Typography;
-
+        const availableRewards = clientInfo !== undefined
+        ? clientInfo.rewards: [];
         //What is shown in display
         return(
             <div align="left" style={{padding: '20px'}}>
 
                 <Card title={'Info cliente'}>
-                    <Row>
+                    <Row gutter={9}>
                         <Col md={8}>
-                            <Form.Item label="Cédula cliente" layout={'inline'}>
-                                <InputNumber style={{width: '100%'}}/>
+                            <Form.Item layout={'inline'}>
+                                {getFieldDecorator('clientIdentification', {
+                                })(
+                                    <InputNumber placeholder={'Cedula cliente'} style={{width: '100%'}}/>
+                                )
+                                }
                             </Form.Item>
                         </Col>
                         <Col md={2}>
-                            <Button type={'primary'}>
+                            <Button type={'primary'} onClick={this.queryClientPoints}>
                                 <Icon type={'search'}/>
                                 Consultar puntos
                             </Button>
                         </Col>
                     </Row>
+                    {queriedUser === true &&
                     <Collapse
                         disabled={true}
                     >
                         <Collapse.Panel key={'info'} header={'Información personal'}>
+                            <Row gutter={8}>
+                                <Col md={2}>
+                                    <span>Nombre</span>
+                                    <span>{clientInfo !== undefined
+                                        ?clientInfo.name
+                                        :''
+                                    }</span>
+
+                                </Col>
+                            </Row>
                         </Collapse.Panel>
                         <Collapse.Panel key={'points'} header={'Información puntos'}>
+                            <Table columns={this.state.columns} dataSource={clientInfo !== undefined
+                                ?clientInfo.points : []}/>
                         </Collapse.Panel>
                     </Collapse>
+                    }
+
                 </Card>
                 <br/>
-                <center>
-                <Title>Registro de intercambios</Title>
-                </center>
-                <br/>
+                <Card title={'Registro incercambios'}>
+                    <Form>
+                        <Row>
 
-                <Form layout={"inline"}>
-                    <Row>
-                    <Col md={7}>
-                    </Col>
-                        <Col md={10}>
-                            <Form.Item
-                                label="Cédula cliente"
-                            >
-                                {getFieldDecorator('id', {
-                                    rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
-                                })(
-                                    <Input type="number"/>
-                                )}
-                            </Form.Item>
-                        </Col>
-                        <Col md={4}>
-                            <Form.Item>
-                                <Button type={'primary'}>
-                                    <Icon type={'search'}/>
-                                    Consultar puntos
-                                </Button>
-                            </Form.Item>
-                        </Col>
-                    </Row>
-
-                    <Row>
-                        <Col md={7}>
-                        </Col>
-                        <Col md={10}>
-                            <Form.Item
-                                label="Premio deseado"
-                            >
-                                {getFieldDecorator('reward', {
-                                    rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
-                               })(
-                                  <Select placeholder='Seleccione' options={reward} >
-                                        {reward.map((option, i) => (
-                                         <Select.Option value={option.value} key={i}>
-                                               {option.label}
-                                          </Select.Option>
-                                     ))}
-                                 </Select>
-                             )}
-                            </Form.Item>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col md={15}>
-                        </Col>
-                        <Col md={1}>
-                            < Form.Item>
-                                <Button  type="primary" htmlType="submit">Registrar</Button>
-                            </Form.Item>
-                        </Col>
-                    </Row>
-                </Form>
+                            <Col md={10}>
+                                <Form.Item
+                                    label="Premio deseado"
+                                    style={{width: '100%'}}
+                                >
+                                    {getFieldDecorator('reward', {
+                                        rules: [{ required: true, message: 'Este campo es obligatorio'}],
+                                    })(
+                                        <Select placeholder='Seleccione' style={{width: '100%'}}>
+                                            {availableRewards.map((reward, i) => (
+                                                <Select.Option value={reward.idReward} key={i} style={{width: '100%'}}>
+                                                    {reward.name}
+                                                </Select.Option>
+                                            ))}
+                                        </Select>
+                                    )}
+                                </Form.Item>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col md={15}>
+                            </Col>
+                            <Col md={1}>
+                                < Form.Item>
+                                    <Button  type="primary" onClick={this.performExchange}>
+                                        Redimir premio
+                                    </Button>
+                                </Form.Item>
+                            </Col>
+                        </Row>
+                    </Form>
+                </Card>
 
             </div>
         );

@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {toggleCreationModal, fetchOffices} from '../Store/Actions/OfficeActions';
+import {toggleCreationModal, fetchOffices, createOffice} from '../Store/Actions/OfficeActions';
 import Offices from '../UI/Office/Offices';
 
 const mapStateToProps = (state) => {
@@ -12,7 +12,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
         return {
             toggleModal: (flag) =>  dispatch(toggleCreationModal(flag)),
-            fetchOffices: () => dispatch(fetchOffices())
+            fetchOffices: () => dispatch(fetchOffices()),
+            createOffice: (officeInfo) => dispatch(createOffice(officeInfo))
         }
 };
 

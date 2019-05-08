@@ -1,14 +1,45 @@
 import React from 'react'
 import {Form, Input, Button, Typography} from 'antd/lib/index';
+import {WarningMsg} from '../../GeneralComponents/Messages';
+import {Redirect} from 'react-router-dom';
+import Routes from '../../../utils/routes';
 
 class RegReward extends React.Component{
-    state = {
-        confirmDirty: false,
-        //  autoCompleteResult: [],
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            confirmDirty: false,
+            createdReward: false,
+            //  autoCompleteResult: [],
+        };
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleSubmit(e){
+        e.preventDefault();
+
+        this.props.form.validateFieldsAndScroll((err, values) => {
+            if(!err){
+                const {userInfo} = this.props;
+                console.log('user info', userInfo);
+                const rewardInfo = {
+                    name: values.name,
+                    pointsNeed: values.points,
+                    identNumberEmployee: userInfo.userIdentification
+                };
+
+                this.props.createReward(rewardInfo);
+                this.setState({createdReward: true});
+            }else{
+                WarningMsg('Hay campos por validar');
+            }}
+        )
+    }
+
 
     render(){
         const { getFieldDecorator } = this.props.form;
+        const { createdReward } = this.state;
 
         const formItemLayout = {
             labelCol: {
@@ -39,11 +70,14 @@ class RegReward extends React.Component{
         //What is shown in display
         return(
             <div align="center">
+                {createdReward === true &&
+                    <Redirect to={Routes.rewards}/>
+                }
                 <br/>
                 <Title>Registro de premios</Title>
                 <br/>
 
-                <Form  {...formItemLayout} >
+                <Form  {...formItemLayout} onSubmit={this.handleSubmit}>
                     <Form.Item
                         label="Nombre del premio"
                     >

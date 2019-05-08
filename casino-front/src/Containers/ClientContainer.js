@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {toggleCreationModal, fetchClients} from "../Store/Actions/ClientActions";
+import {toggleCreationModal, fetchClients, createClient} from "../Store/Actions/ClientActions";
 import ClientsList from "../UI/Client/Clients";
 
 const mapStateToProps = (state) => {
@@ -12,7 +12,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         toggleModal: (flag) => dispatch(toggleCreationModal(flag)),
-        fetchClients: () => dispatch(fetchClients())
+        fetchClients: () => dispatch(fetchClients()),
+        createClient: (clientInfo) => dispatch(createClient(clientInfo))
     };
 };
 

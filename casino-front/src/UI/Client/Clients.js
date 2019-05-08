@@ -55,7 +55,7 @@ class ClientsList extends Component{
                 </Row>
                 <Divider />
                 <Table dataSource={clients} columns={columns}/>
-                <ClientForm visible={visibleModal} onCancel={() => this.toggleModal(false)}/>
+                <ClientForm visible={visibleModal} onCancel={() => this.toggleModal(false)} createClient={this.props.createClient}/>
             </div>
         );
     }

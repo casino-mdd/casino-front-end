@@ -18,28 +18,29 @@ class RewardsList extends Component{
                 },
                 {
                     title: 'Puntos requeridos',
-                    dataIndex: 'pointsNeeded',
+                    dataIndex: 'pointsNeed',
                     key: 'pointsNeeded'
-                },
-                {
-                    title: 'Disponible',
-                    dataIndex: 'available',
-                    key: 'available'
-                },
+                }
             ]
         };
+    }
+
+    componentDidMount(){
+        this.props.fetchRewards();
     }
 
     render(){
         const { rewardsByOffice } = this.props;
         const { columns } = this.state;
+        const { rewards } = this.props;
+
         return(
             <div style={{padding: '20px'}}>
                 <Card title={'Premios por oficina'}>
                     <Collapse bordered={false}>
                         {
-                            rewardsByOffice.map((office, i) => (
-                                <Panel key={i} header={office.office}>
+                            rewards.map((office, i) => (
+                                <Panel key={i} header={office.name}>
                                     <Table key={i} columns={columns} dataSource={office.rewards}/>
                                 </Panel>
                             ))

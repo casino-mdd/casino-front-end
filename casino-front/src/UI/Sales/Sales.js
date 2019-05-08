@@ -15,13 +15,18 @@ class SalesList extends Component{
                     key: 'client',
                 },
                 {
+                    title: 'Documento',
+                    dataIndex: 'idenNumClient',
+                    key: 'idenNumClient'
+                },
+                {
                     title: 'Valor',
                     dataIndex: 'cost',
                     key: 'cost',
                 },
                 {
                     title: 'Modo de pago',
-                    dataIndex: 'payment_method',
+                    dataIndex: 'paymentMethod',
                     key: 'paymentMethod',
                 },
                 {
@@ -37,6 +42,11 @@ class SalesList extends Component{
             ]
         };
     }
+
+    componentDidMount(){
+        this.props.fetchSales();
+    }
+
     render(){
         const { sales } = this.props;
         const { columns } = this.state;
