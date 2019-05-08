@@ -16,19 +16,14 @@ class SalesList extends Component{
                     key: 'client',
                 },
                 {
-                    title: 'Documento',
-                    dataIndex: 'idenNumClient',
-                    key: 'idenNumClient'
+                    title: '# Fichas',
+                    dataIndex: 'token',
+                    key: 'token',
                 },
                 {
-                    title: 'Valor',
+                    title: 'Valor (COP)',
                     dataIndex: 'cost',
                     key: 'cost',
-                },
-                {
-                    title: 'Modo de pago',
-                    dataIndex: 'paymentMethod',
-                    key: 'paymentMethod',
                 },
                 {
                     title: 'Puntos otorgados',

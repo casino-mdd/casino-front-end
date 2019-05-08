@@ -22,6 +22,11 @@ class RewardsList extends Component{
                     title: 'Puntos requeridos',
                     dataIndex: 'pointsNeed',
                     key: 'pointsNeeded'
+                },
+                {
+                    title: 'Disponible',
+                    dataIndex: 'isAvailable',
+                    key: 'isAvailable'
                 }
             ]
         };

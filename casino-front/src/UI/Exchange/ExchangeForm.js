@@ -122,9 +122,7 @@ class RegExchange extends React.Component{
                             <Row gutter={8}>
                                 <Col md={2}>
                                     <span>Nombre: </span>
-                                    <span>{clientInfo !== undefined   ?clientInfo.name   :''
-                                    }</span>
-
+                                    <span>{clientInfo !== undefined  ?clientInfo.name :''}</span>
                                 </Col>
                             </Row>
                         </Collapse.Panel>

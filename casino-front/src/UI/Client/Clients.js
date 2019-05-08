@@ -11,9 +11,14 @@ class ClientsList extends Component{
         this.state = {
             columns: [
                 {
-                    title: 'Name',
+                    title: 'Nombre',
                     dataIndex: 'name',
                     key: 'name'
+                },
+                {
+                    title: 'Cédula',
+                    dataIndex: 'identificationNumber',
+                    key: 'identificationNumber'
                 },
                 {
                     title: 'Edad',
@@ -29,6 +34,11 @@ class ClientsList extends Component{
                     title: 'Teléfono',
                     dataIndex: 'phone',
                     key: 'phone'
+                },
+                {
+                    title: 'Fecha de registro',
+                    dataIndex: 'createdDate',
+                    key: 'createdDate'
                 },
             ]
         };

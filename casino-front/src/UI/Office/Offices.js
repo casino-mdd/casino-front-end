@@ -16,6 +16,11 @@ const office_columns = [
         title: 'Ciudad',
         dataIndex: 'city',
         key: 'city',
+    },
+    {
+        title: 'Dirección',
+        dataIndex: 'address',
+        key: 'address',
     }
 ];
 

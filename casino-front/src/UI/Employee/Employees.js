@@ -16,19 +16,29 @@ class EmployeesList extends Component{
                     key: 'name',
                 },
                 {
+                    title: 'Cédula',
+                    dataIndex: 'identificationNumber',
+                    key: 'identificationNumber',
+                },
+                {
                     title: 'Email',
                     dataIndex: 'email',
                     key: 'email',
                 },
                 {
-                    title: 'Fecha ingreso',
-                    dataIndex: 'admissionDate',
-                    key: 'admissionDate',
-                },
-                {
                     title: 'Oficina',
                     dataIndex: 'office',
                     key: 'office',
+                },
+                {
+                    title: 'Cargo',
+                    dataIndex: 'position',
+                    key: 'position',
+                },
+                {
+                    title: 'Fecha ingreso',
+                    dataIndex: 'admissionDate',
+                    key: 'admissionDate',
                 },
             ]
         };
