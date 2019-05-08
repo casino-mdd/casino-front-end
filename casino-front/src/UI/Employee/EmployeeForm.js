@@ -54,7 +54,7 @@ class EmployeeForm extends React.Component{
         const { mode, visible, onCancel, offices } = this.props;
         const title = (mode === 'create'
         ? 'Crear'
-        : 'Editar') + ' empleado';
+        : 'Editar') + ' funcionario';
 
         const formItemLayout = {
             labelCol: {

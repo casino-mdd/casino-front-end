@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Input, Button, Card, Col, Row, message } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 import {Redirect} from 'react-router-dom';
 import casinoBackGround from '../../assets/img/casinoBG.jpg';
 import '../styles/loginStyles.css'
@@ -40,14 +40,17 @@ class Login extends Component{
                 }
                 {isSigned === false &&
                     <Form className='sign-in-form' onSubmit={this.handleSubmit}>
-                <h1>UN Casino iniciar sesión</h1>
-                <div className='sign-in-background-crop'>
-                    <img className='sign-in-background' alt='background' src={casinoBackGround} />
-                </div>
+                        <br/>
+                        <h1>UN Casino </h1>
+                        <h1>Iniciar sesión</h1>
+                        <br/>
+                        <div className='sign-in-background-crop'>
+                            <img className='sign-in-background' alt='background' src={casinoBackGround} />
+                        </div>
 
                 <Form.Item label='Usuario'>
                     {getFieldDecorator('username', {
-                        rules: [{required: true, message: 'Ingrese un nombre de usuario'}]
+                        rules: [{required: true, message: 'Ingrese su nombre de usuario'}]
                     })
                     (
                         <Input placeholder='Usuario' xs={6}/>
@@ -56,7 +59,7 @@ class Login extends Component{
                 </Form.Item>
                 <Form.Item label='Contraseña'>
                     {getFieldDecorator('password', {
-                        rules: [{required: true, message: 'Ingrese la contraseña'}]
+                        rules: [{required: true, message: 'Ingrese su contraseña'}]
                     })
                     (
                         <Input placeholder='Contraseña' type='password'/>

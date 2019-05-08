@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Proptypes from 'prop-types';
 import {List, Avatar, Card, Table, Row, Col, Button, Icon, Divider} from 'antd';
 import OfficeForm from "./OfficeForm";
+import '../styles/lists_bg.css'
+import casinoBackGround from '../../assets/img/casinoBG.jpg';
 
 
 const office_columns = [
@@ -41,6 +43,10 @@ class OfficesList extends Component{
         return(
 
             <div style={{padding: '20px'}}>
+                <div className='list-style'>
+                    <div className='background-crop'>
+                        <img className='background' alt='background' src={casinoBackGround} />
+                    </div>
                 <Row>
                     <Col md={2} offset={21}>
                         <Button type='primary' onClick={()=> this.toggleModal(true)}>
@@ -55,6 +61,7 @@ class OfficesList extends Component{
                 <OfficeForm visible={visibleModal} onCancel={() => this.toggleModal(false)}
                     createOffice={this.props.createOffice}
                 />
+            </div>
             </div>
         );
     }

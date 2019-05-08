@@ -1,6 +1,8 @@
 import React from 'react'
 import {Form, Input, Button, Table,
 Typography, Select, Col, Row, Icon, Card, InputNumber, Collapse} from 'antd';
+import '../styles/forms_bg.css'
+import casinoBackGround from '../../assets/img/casinoBG.jpg';
 
 const reward = [{
     value: 'reward1',
@@ -99,7 +101,14 @@ class RegExchange extends React.Component{
         //What is shown in display
         return(
             <div align="left" style={{padding: '20px'}}>
-
+                <br/>
+                <center>
+                    <h1>Registro de intercambios</h1>
+                </center>
+                <br/>
+                <div className='trx-background-crop'>
+                    <img className='trx-background' alt='background' src={casinoBackGround} />
+                </div>
                 <Card title={'Info cliente'}>
                     <Row gutter={9}>
                         <Col md={8}>

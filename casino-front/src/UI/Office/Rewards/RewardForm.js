@@ -1,8 +1,10 @@
 import React from 'react'
-import {Form, Input, Button, Typography} from 'antd/lib/index';
+import {Form, Input, Button} from 'antd/lib/index';
 import {WarningMsg} from '../../GeneralComponents/Messages';
 import {Redirect} from 'react-router-dom';
 import Routes from '../../../utils/routes';
+import '../../styles/forms_bg.css'
+import casinoBackGround from '../../../assets/img/casinoBG.jpg';
 
 class RegReward extends React.Component{
     constructor(props) {
@@ -65,19 +67,19 @@ class RegReward extends React.Component{
             },
         };
 
-        const { Title } = Typography;
-
         //What is shown in display
         return(
             <div align="center">
                 {createdReward === true &&
                     <Redirect to={Routes.rewards}/>
                 }
-                <br/>
-                <Title>Registro de premios</Title>
-                <br/>
-
-                <Form  {...formItemLayout} onSubmit={this.handleSubmit}>
+                <Form  className='trx-form' {...formItemLayout} onSubmit={this.handleSubmit}>
+                    <br/>
+                    <h1>Registro de premios</h1>
+                    <br/>
+                    <div className='trx-background-crop'>
+                        <img className='trx-background' alt='background' src={casinoBackGround} />
+                    </div>
                     <Form.Item
                         label="Nombre del premio"
                     >

@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Table, Row, Col, Button, Divider, Icon} from 'antd';
 import UserForm from "./UsersForm";
+import '../styles/lists_bg.css'
+import casinoBackGround from '../../assets/img/casinoBG.jpg';
 
 class UsersList extends Component{
     constructor(props) {
@@ -39,16 +41,22 @@ class UsersList extends Component{
 
         return(
             <div style={{padding: '20px'}}>
-                <Row>
-                    <Col md={2} offset={20}>
-                        <Button type='primary' onClick={() => this.toggleModal(true)}>
-                            <Icon type='user-add' />
-                            Agregar usuario
-                        </Button>
-                    </Col>
-                </Row>
-                <Table dataSource={users} columns={columns}/>
-                <UserForm visible={visibleModal} onCancel={() => this.toggleModal(false)}/>
+                <div className='list-style'>
+                    <div className='background-crop'>
+                        <img className='background' alt='background' src={casinoBackGround} />
+                    </div>
+                    <Row>
+                        <Col md={2} offset={20}>
+                            <Button type='primary' onClick={() => this.toggleModal(true)}>
+                                <Icon type='user-add' />
+                                Agregar usuario
+                            </Button>
+                        </Col>
+                    </Row>
+                    <Divider />
+                    <Table dataSource={users} columns={columns}/>
+                    <UserForm visible={visibleModal} onCancel={() => this.toggleModal(false)}/>
+                </div>
             </div>
         );
     }

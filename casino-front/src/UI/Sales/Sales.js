@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Typography} from 'antd/lib/index';
+import '../styles/lists_bg.css'
+import casinoBackGround from '../../assets/img/casinoBG.jpg';
 
 import {Table} from 'antd'
 
@@ -35,7 +36,7 @@ class SalesList extends Component{
                     key: 'points',
                 },
                 {
-                    title: 'Empleado',
+                    title: 'Funcionario',
                     dataIndex: 'employee',
                     key: 'employee',
                 }
@@ -50,13 +51,17 @@ class SalesList extends Component{
     render(){
         const { sales } = this.props;
         const { columns } = this.state;
-        const { Title } = Typography;
         return(
             <div style={{padding: '20px'}}>
-            <br/>
-                    <Title>Reporte de ventas</Title>
-            <br/>
-                <Table dataSource={sales} columns={columns}/>
+                <div className='list-style'>
+                    <div className='background-crop'>
+                        <img className='background' alt='background' src={casinoBackGround} />
+                    </div>
+                    <br/>
+                        <h1>Reporte de ventas</h1>
+                    <br/>
+                    <Table dataSource={sales} columns={columns}/>
+                </div>
             </div>
         );
     }

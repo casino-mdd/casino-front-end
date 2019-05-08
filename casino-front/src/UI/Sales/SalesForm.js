@@ -1,6 +1,8 @@
 import React from 'react'
-import {Form, Input, Button, Typography, Select} from 'antd/lib/index';
+import {Form, Input, Button, Select} from 'antd/lib/index';
 import SalesServuces from '../../Services/SaleServices';
+import '../styles/forms_bg.css'
+import casinoBackGround from '../../assets/img/casinoBG.jpg';
 
 const payment = [{
     value: 'Efectivo',
@@ -75,16 +77,16 @@ class SaleRegister extends React.Component{
             },
         };
 
-        const { Title } = Typography;
-
         //What is shown in display
         return(
             <div align="center">
-                <br/>
-                <Title>Registro de ventas</Title>
-                <br/>
-
-                <Form  {...formItemLayout} onSubmit={this.handleSubmit}>
+                <Form  className='trx-form' {...formItemLayout} onSubmit={this.handleSubmit}>
+                    <br/>
+                    <h1>Registro de ventas</h1>
+                    <br/>
+                    <div className='trx-background-crop'>
+                        <img className='trx-background' alt='background' src={casinoBackGround} />
+                    </div>
                     <Form.Item
                         label="Cédula cliente"
                     >
