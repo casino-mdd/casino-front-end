@@ -17,14 +17,18 @@ export default class NavigationBar extends Component{
     }
 
     render(){
+        const {isSigned} = this.props;
+
         return(
             <Menu theme='dark' mode='horizontal'>
-
+                {isSigned === false &&
                 <Item>
                     <NavLink to={Routes.home}>
-                    Casino home
+                        Casino home
                     </NavLink>
                 </Item>
+                }
+
                 <Item>
                     <NavLink to={Routes.clients}>
                         Clientes
@@ -82,10 +86,12 @@ export default class NavigationBar extends Component{
                     </NavLink>
                 </Item>
                 <Item>
-                    <Button onClick={this.handleSignOut}>
+                    <Button onClick={this.handleSignOut} >
+                        Salir
                         <Icon type={'logout'} />
                     </Button>
                 </Item>
+
             </Menu> 
         )
     }

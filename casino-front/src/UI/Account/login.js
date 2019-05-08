@@ -24,6 +24,7 @@ class Login extends Component{
                 };
                 this.props.signIn(userInfo)
             }else{
+                console.log('validating form', error, values);
                 message.warning('Campos invalidos');
             }
         }

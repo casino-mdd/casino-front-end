@@ -1,6 +1,7 @@
 import {ExchangesReducerConstants as C} from '../Constants';
 import ExchangeServices from '../../Services/ExchangeServices';
 import {WarningMsg, SuccessMsg} from '../../UI/GeneralComponents/Messages';
+import {message} from "antd";
 
 const setClientInfo = (clientInfo) => {
     return {
@@ -23,7 +24,7 @@ export const getClientPoints = (clientId, userId) => {
                 dispatch(setClientInfo(response.data));
             })
             .catch(err => {
-                WarningMsg(err.data);
+                message.error('Cliente invalido');
             });
     };
 };

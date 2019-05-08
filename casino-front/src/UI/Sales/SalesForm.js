@@ -1,5 +1,5 @@
 import React from 'react'
-import {Form, Input, Button, Select} from 'antd/lib/index';
+import {Form, Input, Button, Select, message} from 'antd/lib/index';
 import SalesServuces from '../../Services/SaleServices';
 import '../styles/forms_bg.css'
 import casinoBackGround from '../../assets/img/casinoBG.jpg';
@@ -44,8 +44,10 @@ class SaleRegister extends React.Component{
                     idenNumEmployee: userInfo.userIdentification
                 };
                 SalesServuces.registerSale(saleInfo);
-            }else{
 
+                message.success('Venta registrada');
+            }else{
+                message.error('Campos invalidos');
             }
         })
     }

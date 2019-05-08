@@ -1,5 +1,8 @@
 import {UserReducerConstants as C, SessionReducerConstants as SessionC} from '../Constants'
 import UserServices from '../../Services/UserServices';
+import {message} from "antd";
+import Routes from "../../utils/routes";
+import React from "react";
 
 const toggleModal = (flag) => {
     return {
@@ -52,9 +55,10 @@ export const signIn = (userInfo) => {
             localStorage.setItem('userIdentification', data.idEmployee.idPerson.identificationNumber);
 
             dispatch(setUserInfo(sessionData));
+
         })
         .catch(err => {
-
+              message.warning('Usuario y/o constraseña invalidos');
         });
     };
 };
