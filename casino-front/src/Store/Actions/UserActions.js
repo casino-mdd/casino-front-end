@@ -58,7 +58,7 @@ export const signIn = (userInfo) => {
 
         })
         .catch(err => {
-              message.warning('Usuario y/o constraseña invalidos');
+              message.error('Usuario y/o constraseña invalidos');
         });
     };
 };

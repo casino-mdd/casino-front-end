@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Form, Input,  Button,  Typography, Modal} from 'antd';
-import {WarningMsg} from '../GeneralComponents/Messages';
+import {Form, Input, Button, Modal} from 'antd';
+import {ErrorMsg} from '../GeneralComponents/Messages';
 import 'antd/dist/antd.css';
 
 class OfficeForm extends React.Component{
@@ -27,7 +27,7 @@ class OfficeForm extends React.Component{
 
                 this.props.createOffice(officeInfo);
             }else{
-                WarningMsg('Hay campos por validar');
+                ErrorMsg('Información incompleta');
             }
 
         });
@@ -35,30 +35,6 @@ class OfficeForm extends React.Component{
 
     render(){
         const { getFieldDecorator } = this.props.form;
-
-        const formItemLayout = {
-            labelCol: {
-                xs: { span: 24 },
-                sm: { span: 8 },
-            },
-            wrapperCol: {
-                xs: { span: 24 },
-                sm: { span: 8 },
-            },
-        };
-
-        const tailFormItemLayout = {
-            wrapperCol: {
-                xs: {
-                    span: 24,
-                    offset: 0,
-                },
-                sm: {
-                    span: 16,
-                    offset: 8,
-                },
-            },
-        };
 
         const { mode, visible, onCancel } = this.props;
         const title = (mode === 'create'

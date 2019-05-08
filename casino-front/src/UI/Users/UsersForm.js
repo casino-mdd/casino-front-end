@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {Form, Input, Button, Typography, Select, Modal} from 'antd';
+import {Form, Input, Button, Select, Modal} from 'antd';
+import {ErrorMsg} from "../GeneralComponents/Messages";
 
 const yesno = [{
     value: 'yes',
@@ -22,10 +23,14 @@ const role = [{
 ];
 
 class UserForm extends React.Component{
-    state = {
-        confirmDirty: false,
-        //  autoCompleteResult: [],
-    };
+    constructor(props){
+        super(props);
+        this.state = {
+            confirmDirty: false,
+            //  autoCompleteResult: [],
+        };
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
 
     compareToFirstPassword = (rule, value, callback) => {
         const form = this.props.form;
@@ -44,6 +49,25 @@ class UserForm extends React.Component{
         callback();
     }
 
+    handleSubmit(e){
+        e.preventDefault();
+        this.props.form.validateFieldsAndScroll((err, values) => {
+            if(!err){
+                const userInfo = {
+                    id: values.id,
+                    user: values.user,
+                    password: values.password,
+                    rights: values.rights,
+                    activate: values.activate
+                };
+
+             //   this.props.createOffice(userInfo);
+            }else{
+                ErrorMsg('Información incompleta');
+            }
+
+        });
+    }
     render(){
         const { getFieldDecorator } = this.props.form;
         const {mode, visible, onCancel, existingUser} = this.props;
@@ -52,35 +76,17 @@ class UserForm extends React.Component{
         ? 'Crear'
         : 'Editar') + ' usuario';
 
-        const formItemLayout = {
-            labelCol: {
-                xs: { span: 24 },
-                sm: { span: 8 },
-            },
-            wrapperCol: {
-                xs: { span: 24 },
-                sm: { span: 8 },
-            },
-        };
-
-        const tailFormItemLayout = {
-            wrapperCol: {
-                xs: {
-                    span: 24,
-                    offset: 0,
-                },
-                sm: {
-                    span: 16,
-                    offset: 8,
-                },
-            },
-        };
-
         //What is shown in display
         return(
             <Modal title={title}
                 visible={visible}
                 onCancel={onCancel}
+                   footer={[
+                       <Button key="back" onClick={onCancel}>Cancelar</Button>,
+                       <Button key="submit"  htmlType={'submit'} type="primary" onClick={this.handleSubmit}>
+                           Registrar
+                       </Button>,
+                   ]}
                 >
                 <div >
 
@@ -160,10 +166,6 @@ class UserForm extends React.Component{
                                 </Select>
                             )}
                         </Form.Item>
-                        <Form.Item {...tailFormItemLayout}>
-                            <Button  type="primary" htmlType="submit">Registrar</Button>
-                        </Form.Item>
-
                     </Form>
                 </div>
             </Modal>

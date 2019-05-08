@@ -1,6 +1,7 @@
 import {EmployeesReducerConstants as C} from '../Constants';
 import EmployeeServices from '../../Services/EmployeeServices';
 import OfficeServices from "../../Services/OfficeServices";
+import {SuccessMsg, WarningMsg} from "../../UI/GeneralComponents/Messages";
 
 const toggleModal = (flag) => {
     return {
@@ -58,9 +59,11 @@ export const createEmployee = (employeeInfo) => {
     return dispatch => {
         EmployeeServices.createEmployee(employeeInfo)
             .then(response => {
+                SuccessMsg('Funcionario creado exitosamente');
                 dispatch(toggleModal(false))
             })
             .catch(err => {
+                WarningMsg('Error creando funcionario');
                 dispatch(toggleModal(false))
             });
     };

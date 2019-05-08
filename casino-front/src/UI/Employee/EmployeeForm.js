@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Form, Input, Button, DatePicker, Typography, Select, Modal, Row, Col, InputNumber, message} from 'antd';
 import 'antd/dist/antd.css';
+import {ErrorMsg} from "../GeneralComponents/Messages";
 
 const gender = [{
     value: 'F',
@@ -41,10 +42,9 @@ class EmployeeForm extends React.Component{
                 };
 
                 console.log('Before send' , employeeInfo);
-
                 this.props.createEmployee(employeeInfo);
             }else{
-                message.warning('Hay campos por validar');
+                ErrorMsg('Información incompleta');
             }
         })
     }
@@ -55,30 +55,6 @@ class EmployeeForm extends React.Component{
         const title = (mode === 'create'
         ? 'Crear'
         : 'Editar') + ' funcionario';
-
-        const formItemLayout = {
-            labelCol: {
-                xs: { span: 24 },
-                sm: { span: 8 },
-            },
-            wrapperCol: {
-                xs: { span: 24 },
-                sm: { span: 8 },
-            },
-        };
-
-        const tailFormItemLayout = {
-            wrapperCol: {
-                xs: {
-                    span: 24,
-                    offset: 0,
-                },
-                sm: {
-                    span: 16,
-                    offset: 8,
-                },
-            },
-        };
 
         const config = {
             rules: [{ type: 'object', required: true, message: 'Por favor seleccione una fecha' }],
