@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import { Layout, Menu, Button, Icon } from 'antd'
 import Routes from '../../utils/routes';
 import {NavLink} from 'react-router-dom';
+import {connect} from "react-redux";
 const { Header, Sider, Content } = Layout;
 const  Item  = Menu.Item;
 const SubMenu = Menu.SubMenu;
 
-export default class NavigationBar extends Component{
+class NavigationBar extends Component{
     constructor(props) {
         super(props);
         this.handleSignOut = this.handleSignOut.bind(this);
@@ -18,6 +19,7 @@ export default class NavigationBar extends Component{
 
     render(){
         const {isSigned} = this.props;
+        const {isAdmin} = this.props;
 
         return(
             <Menu theme='dark' mode='horizontal'>
@@ -28,22 +30,41 @@ export default class NavigationBar extends Component{
                     </NavLink>
                 </Item>
                 }
-
+                {isSigned === true && isAdmin === true &&
                 <Item>
                     <NavLink to={Routes.clients}>
                         Clientes
                     </NavLink>
                 </Item>
+                }
+                {isSigned === true && isAdmin === true &&
                 <Item>
                     <NavLink to={Routes.employees}>
                         Funcionarios
                     </NavLink>
                 </Item>
+                }
+                {isSigned === true && isAdmin === true &&
                 <Item>
                     <NavLink to={Routes.offices}>
                         Oficinas
                     </NavLink>
                 </Item>
+                }
+                {isSigned === true && isAdmin === true &&
+                <SubMenu title={<span>Premios</span>}>
+                    <Item>
+                        <NavLink to={Routes.rewardRegister}>
+                            Registrar premios
+                        </NavLink>
+                    </Item>
+                    <Item>
+                        <NavLink to={Routes.rewards}>
+                            Listado premios
+                        </NavLink>
+                    </Item>
+                </SubMenu>
+                }
                 <SubMenu title={<span>Ventas</span>}>
                     <Item>
                         <NavLink to={Routes.salesRegister}>
@@ -68,23 +89,13 @@ export default class NavigationBar extends Component{
                         </NavLink>
                     </Item>
                 </SubMenu>
-                <SubMenu title={<span>Premios</span>}>
-                    <Item>
-                        <NavLink to={Routes.rewardRegister}>
-                            Registrar premios
-                        </NavLink>
-                    </Item>
-                    <Item>
-                        <NavLink to={Routes.rewards}>
-                            Listado premios
-                        </NavLink>
-                    </Item>
-                </SubMenu>
+                {isSigned === true && isAdmin === true &&
                 <Item>
                     <NavLink to={Routes.users}>
                         Usuarios
                     </NavLink>
                 </Item>
+                }
                 <Item>
                     <Button onClick={this.handleSignOut} >
                         Salir
@@ -96,3 +107,12 @@ export default class NavigationBar extends Component{
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        isSigned: state.session.isSigned,
+        isAdmin: state.session.isAdmin
+    };
+};
+
+export default connect(mapStateToProps)(NavigationBar);

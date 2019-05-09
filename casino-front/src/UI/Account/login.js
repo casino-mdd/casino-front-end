@@ -39,7 +39,7 @@ class Login extends Component{
                 {isSigned === true &&
                     <Redirect to={Routes.offices}/>
                 }
-                {isSigned === false &&
+                {   isSigned === false &&
                     <Form className='sign-in-form' onSubmit={this.handleSubmit}>
                         <br/>
                         <h1>UN Casino </h1>

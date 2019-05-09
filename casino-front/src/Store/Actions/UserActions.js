@@ -4,6 +4,7 @@ import {message} from "antd";
 import React from "react";
 import {ErrorMsg, SuccessMsg, WarningMsg} from "../../UI/GeneralComponents/Messages";
 import OfficeServices from "../../Services/OfficeServices";
+import {bool} from "prop-types";
 
 const toggleModal = (flag) => {
     return {
@@ -28,13 +29,15 @@ const setOfficesList = (offices) => {
 };
 
 const setUserInfo = (sessionInfo) => {
+
     return {
         type: SessionC.SET_SESSION_INFO,
         username: sessionInfo.username,
         role: sessionInfo.role,
         userId: sessionInfo.userId,
         userIdentification: sessionInfo.userIdentification,
-        isSigned: sessionInfo.isSigned
+        isSigned: sessionInfo.isSigned,
+        isAdmin: sessionInfo.isAdmin
     };
 };
 
@@ -49,13 +52,22 @@ export const signIn = (userInfo) => {
     UserServices.signIn(userInfo)
         .then(response => {
             const data = response.data;
+
             console.log('success!', response);
+            var admin;
+            admin = false;
+            if (data.profile==="ADMIN")
+            {
+                admin =true;
+            }
+            
             const sessionData = {
                 username: data.username,
                 role: data.idEmployee.position,
                 userId: data.idUserAccount,
                 userIdentification: data.idEmployee.idPerson.identificationNumber,
-                isSigned: true
+                isSigned: true,
+                isAdmin: admin
             };
 
             localStorage.setItem('username', data.username);
@@ -86,7 +98,8 @@ export const signOut = () => {
             role: undefined,
             userId: undefined,
             userIdentification: undefined,
-            isSigned: false
+            isSigned: false,
+            isAdmin: false
         };
 
         localStorage.setItem('username', undefined);
