@@ -89,13 +89,6 @@ class NavigationBar extends Component{
                         </NavLink>
                     </Item>
                 </SubMenu>
-                {isSigned === true && isAdmin === true &&
-                <Item>
-                    <NavLink to={Routes.users}>
-                        Usuarios
-                    </NavLink>
-                </Item>
-                }
                 <Item>
                     <Button onClick={this.handleSignOut} >
                         Salir

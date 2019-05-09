@@ -26,7 +26,18 @@ class RewardsList extends Component{
                 {
                     title: 'Disponible',
                     dataIndex: 'isAvailable',
-                    key: 'isAvailable'
+                    key: 'isAvailable',
+                    render: isAvailable => {
+                        var ab;
+                        if (isAvailable == true) {
+                            ab =("Disponible");
+                        }
+
+                        else {
+                        ab=("No disponible");
+                        }
+                        return ab;
+                    }
                 }
             ]
         };
