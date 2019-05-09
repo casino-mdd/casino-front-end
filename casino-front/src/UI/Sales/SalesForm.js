@@ -5,6 +5,7 @@ import '../styles/forms_bg.css'
 import casinoBackGround from '../../assets/img/casinoBG.jpg';
 import Routes from "../../utils/routes";
 import {Redirect} from 'react-router-dom';
+import {SuccessMsg} from "../GeneralComponents/Messages";
 
 const payment = [{
     value: 'Efectivo',
@@ -47,9 +48,8 @@ class SaleRegister extends React.Component{
                     idenNumClient: values.clientIdentification,
                     idenNumEmployee: userInfo.userIdentification
                 };
-                SalesServuces.registerSale(saleInfo);
-                message.success('Venta registrada');
-                this.isSuccess=true;
+                this.props.regSale(saleInfo);
+
             }else{
                 message.error('Campos invalidos');
             }

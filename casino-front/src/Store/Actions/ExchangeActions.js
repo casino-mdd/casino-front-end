@@ -1,7 +1,6 @@
 import {ExchangesReducerConstants as C} from '../Constants';
 import ExchangeServices from '../../Services/ExchangeServices';
-import {WarningMsg, SuccessMsg} from '../../UI/GeneralComponents/Messages';
-import {message} from "antd";
+import {SuccessMsg, ErrorMsg} from '../../UI/GeneralComponents/Messages';
 
 const setClientInfo = (clientInfo) => {
     return {
@@ -21,10 +20,20 @@ export const getClientPoints = (clientId, userId) => {
     return dispatch => {
         ExchangeServices.queryPointsByClient(clientId, userId)
             .then(response => {
-                dispatch(setClientInfo(response.data));
+                const data = response.data;
+                if(data.points.length ==0)
+                {
+                    ErrorMsg("Sin puntos disponibles");
+                }
+                    else
+                {
+                    dispatch(setClientInfo(response.data));
+                }
+
             })
             .catch(err => {
-                message.error('Cliente invalido');
+                ErrorMsg('Cliente invalido');
+                setClientInfo(null);
             });
     };
 };

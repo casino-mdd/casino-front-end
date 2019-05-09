@@ -77,8 +77,6 @@ class RegExchange extends React.Component{
         const availableRewards = clientInfo !== undefined
         ? clientInfo.rewards: [];
 
-        const pointsArray = clientInfo !== undefined
-        ? clientInfo.points:[];
 
         //What is shown in display
         return(
@@ -109,14 +107,6 @@ class RegExchange extends React.Component{
                     <Collapse
                         disabled={true}
                     >
-                        <Collapse.Panel key={'info'} header={'Información personal'}>
-                            <Row gutter={8}>
-                                <Col md={2}>
-                                    <span>Nombre: </span>
-                                    <span>{clientInfo !== undefined  ?clientInfo.name :''}</span>
-                                </Col>
-                            </Row>
-                        </Collapse.Panel>
                         <Collapse.Panel key={'points'} header={'Información puntos'}>
                             <Table columns={this.state.columns} dataSource={clientInfo !== undefined
                                 ?clientInfo.points : []}/>

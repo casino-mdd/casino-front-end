@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Form, Input, Button, DatePicker, Typography, Select, Modal, message} from 'antd';
+import {Form, Input, Button, Select, Modal} from 'antd';
 import {ErrorMsg, WarningMsg} from '../GeneralComponents/Messages';
 
 const gender = [{
