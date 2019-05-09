@@ -86,10 +86,6 @@ class SaleRegister extends React.Component{
         //What is shown in display
         return(
             <div align="center">
-                {this.isSuccess === true &&
-                <Redirect to={Routes.sales}/>
-                }
-
                 <Form  className='trx-form' {...formItemLayout} onSubmit={this.handleSubmit}>
                     <br/>
                     <h1>Registro de ventas</h1>

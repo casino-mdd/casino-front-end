@@ -57,11 +57,18 @@ export const performExchange = (exchangeInfo) => {
         ExchangeServices.performExchange(exchangeInfo)
             .then(response => {
                 console.log('seceeees', response.data);
-                SuccessMsg('Intercambio realizado con éxito');
+                const data = response.data;
+                if(data.error)
+                {
+                    ErrorMsg(data.error);
+                }
+                else {
+                    SuccessMsg('Intercambio realizado con éxito');
+                }
 
             })
             .catch(err => {
-
+                ErrorMsg('Problema registrando intercambio');
             });
     };
 };

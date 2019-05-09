@@ -28,7 +28,7 @@ export const regSale = (saleInfo) => {
                 const data = response.data;
                 if(data.error)
                 {
-                    ErrorMsg('Usuario no registrado');
+                    ErrorMsg(data.error);
                 }
                 else
                 {
