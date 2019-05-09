@@ -1,0 +1,58 @@
+.trx-background-crop {
+    top: 0;
+    left: 0;
+    z-index: -1;
+    position: fixed;
+}
+
+.trx-background{
+    width: 100%;
+    object-fit: contain;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.trx-form{
+    width: 100%;
+    padding: 4px 4px 4px 40px !important;
+
+    top: 37%;
+    left: 2%;
+    margin: -220px 0 0 -30px !important;
+    position: absolute;
+
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 6px 10px 7px rgba(0, 0, 0, 0.5) !important;
+}
+
+.trx-form-card1{
+    width: 100%;
+    padding: 4px 4px 4px 40px !important;
+
+    top: 220px;
+    left: 2%;
+    margin: -220px 0 0 -30px !important;
+    position: relative;
+
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 6px 10px 7px rgba(0, 0, 0, 0.5) !important;
+}
+
+.trx-form-card2{
+    width: 100%;
+    padding: 4px 4px 4px 40px !important;
+
+    left: 2%;
+    margin: -220px 0 0 -30px !important;
+    position: relative;
+    top: 430px;
+
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 6px 10px 7px rgba(0, 0, 0, 0.5) !important;
+}

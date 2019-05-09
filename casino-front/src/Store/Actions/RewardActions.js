@@ -3,6 +3,8 @@ import RewardServices from '../../Services/RewardServices';
 import {SuccessMsg, WarningMsg} from '../../UI/GeneralComponents/Messages';
 
 const setRewardsList = (rewards) => {
+
+
     return {
         type: C.SET_REWARDS_LIST,
         rewards
@@ -13,6 +15,8 @@ export const fetchRewards = () => {
     return dispatch => {
         RewardServices.getRewardsList()
             .then(response => {
+
+
                 dispatch(setRewardsList(response.data));
             })
             .catch(err => {

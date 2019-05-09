@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Form, Input, Button, DatePicker, Typography, Select, Modal, Row, Col, InputNumber, message} from 'antd';
+import {Form, Input, Button,  Select, Modal, Row, Col} from 'antd';
 import 'antd/dist/antd.css';
+import {ErrorMsg} from "../GeneralComponents/Messages";
 
 const gender = [{
     value: 'F',
@@ -18,7 +19,7 @@ class EmployeeForm extends React.Component{
         super(props);
         this.state = {
             confirmDirty: false,
-            //  autoCompleteResult: [],
+
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     };
@@ -41,10 +42,9 @@ class EmployeeForm extends React.Component{
                 };
 
                 console.log('Before send' , employeeInfo);
-
                 this.props.createEmployee(employeeInfo);
             }else{
-                message.warning('Hay campos por validar');
+                ErrorMsg('Información incompleta');
             }
         })
     }
@@ -54,35 +54,9 @@ class EmployeeForm extends React.Component{
         const { mode, visible, onCancel, offices } = this.props;
         const title = (mode === 'create'
         ? 'Crear'
-        : 'Editar') + ' empleado';
+        : 'Editar') + ' funcionario';
 
-        const formItemLayout = {
-            labelCol: {
-                xs: { span: 24 },
-                sm: { span: 8 },
-            },
-            wrapperCol: {
-                xs: { span: 24 },
-                sm: { span: 8 },
-            },
-        };
 
-        const tailFormItemLayout = {
-            wrapperCol: {
-                xs: {
-                    span: 24,
-                    offset: 0,
-                },
-                sm: {
-                    span: 16,
-                    offset: 8,
-                },
-            },
-        };
-
-        const config = {
-            rules: [{ type: 'object', required: true, message: 'Por favor seleccione una fecha' }],
-        };
         //What is shown in display
         return(
             <Modal title={title}
@@ -228,10 +202,6 @@ class EmployeeForm extends React.Component{
                                 </Form.Item>
                             </Col>
                         </Row>
-
-                        {/*<Form.Item {...tailFormItemLayout}>
-                            <Button  type="primary" htmlType="submit">Registrar</Button>
-                        </Form.Item>*/}
 
                     </Form>
 

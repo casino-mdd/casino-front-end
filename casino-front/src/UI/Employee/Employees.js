@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Button, Col, Divider, Icon, Row, Table, Select} from 'antd';
+import {Button, Col, Divider, Icon, Row, Table} from 'antd';
 import EmployeeForm from './EmployeeForm'
+import '../styles/lists_bg.css'
+import casinoBackGround from '../../assets/img/casinoBG.jpg';
 
 class EmployeesList extends Component{
     constructor(props){
@@ -14,19 +16,29 @@ class EmployeesList extends Component{
                     key: 'name',
                 },
                 {
+                    title: 'Cédula',
+                    dataIndex: 'identificationNumber',
+                    key: 'identificationNumber',
+                },
+                {
                     title: 'Email',
                     dataIndex: 'email',
                     key: 'email',
                 },
                 {
-                    title: 'Fecha ingreso',
-                    dataIndex: 'admissionDate',
-                    key: 'admissionDate',
-                },
-                {
                     title: 'Oficina',
                     dataIndex: 'office',
                     key: 'office',
+                },
+                {
+                    title: 'Cargo',
+                    dataIndex: 'position',
+                    key: 'position',
+                },
+                {
+                    title: 'Fecha ingreso',
+                    dataIndex: 'admissionDate',
+                    key: 'admissionDate',
                 },
             ]
         };
@@ -49,6 +61,10 @@ class EmployeesList extends Component{
 
         return(
             <div style={{padding: '20px'}}>
+                <div className='list-style'>
+                    <div className='background-crop'>
+                        <img className='background' alt='background' src={casinoBackGround} />
+                    </div>
                 <Row>
                     <Col md={2} offset={21}>
                         <Button type='primary' onClick={() => this.toggleModal(true)}>
@@ -63,6 +79,7 @@ class EmployeesList extends Component{
                 <EmployeeForm visible={visibleModal} onCancel={() => this.toggleModal(false)} offices={offices}
                     createEmployee={createEmployee}
                 />
+            </div>
             </div>
         );
     }

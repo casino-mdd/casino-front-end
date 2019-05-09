@@ -1,6 +1,6 @@
 import {SalesReducerConstants as C} from '../Constants';
 import SaleServices from '../../Services/SaleServices';
-import {WarningMsg} from '../../UI/GeneralComponents/Messages';
+import {ErrorMsg, SuccessMsg, WarningMsg} from '../../UI/GeneralComponents/Messages';
 
 const setSales = (sales) => {
     return {
@@ -17,6 +17,26 @@ export const fetchSales = () => {
             })
             .catch(err => {
                 WarningMsg('Problema consultando las ventas');
+            });
+    };
+};
+
+export const regSale = (saleInfo) => {
+    return dispatch => {
+        SaleServices.registerSale(saleInfo)
+            .then(response => {
+                const data = response.data;
+                if(data.error)
+                {
+                    ErrorMsg(data.error);
+                }
+                else
+                {
+                    SuccessMsg('Venta registrada');
+                }
+            })
+            .catch(err => {
+                ErrorMsg('Problema registrando venta');
             });
     };
 };

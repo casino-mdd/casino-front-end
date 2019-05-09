@@ -25,7 +25,8 @@ export const ExchangesReducerConstants = {
 
 export const UserReducerConstants = {
     TOGGLE_CREATE_USER_MODAL: 'TOGGLE_CREATE_USER_MODAL',
-    SET_USERS_LIST: 'SET_USERS_LIST'
+    SET_USERS_LIST: 'SET_USERS_LIST',
+    SET_OFFICES_USERS_LIST: 'SET_OFFICES_USER_LIST'
 };
 
 export const SessionReducerConstants = {

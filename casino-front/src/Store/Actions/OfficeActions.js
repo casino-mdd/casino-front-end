@@ -44,7 +44,7 @@ export const createOffice = (officeInfo) => {
                 dispatch(fetchOffices());
             })
             .catch(err => {
-                WarningMsg('Problema creando la oficina');
+                WarningMsg('Error creando oficina');
             });
     };
 };

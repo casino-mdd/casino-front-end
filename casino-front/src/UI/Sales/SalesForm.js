@@ -1,6 +1,7 @@
 import React from 'react'
-import {Form, Input, Button, Typography, Select} from 'antd/lib/index';
-import SalesServuces from '../../Services/SaleServices';
+import {Form, Input, Button, Select, message} from 'antd/lib/index';
+import '../styles/forms_bg.css'
+import casinoBackGround from '../../assets/img/casinoBG.jpg';
 
 const payment = [{
     value: 'Efectivo',
@@ -16,6 +17,8 @@ const payment = [{
 ];
 
 class SaleRegister extends React.Component{
+    isSuccess = false;
+
     constructor(props) {
         super(props);
         this.state = {
@@ -41,9 +44,10 @@ class SaleRegister extends React.Component{
                     idenNumClient: values.clientIdentification,
                     idenNumEmployee: userInfo.userIdentification
                 };
-                SalesServuces.registerSale(saleInfo);
-            }else{
+                this.props.regSale(saleInfo);
 
+            }else{
+                message.error('Campos invalidos');
             }
         })
     }
@@ -75,16 +79,16 @@ class SaleRegister extends React.Component{
             },
         };
 
-        const { Title } = Typography;
-
         //What is shown in display
         return(
             <div align="center">
-                <br/>
-                <Title>Registro de ventas</Title>
-                <br/>
-
-                <Form  {...formItemLayout} onSubmit={this.handleSubmit}>
+                <Form  className='trx-form' {...formItemLayout} onSubmit={this.handleSubmit}>
+                    <br/>
+                    <h1>Registro de ventas</h1>
+                    <br/>
+                    <div className='trx-background-crop'>
+                        <img className='trx-background' alt='background' src={casinoBackGround} />
+                    </div>
                     <Form.Item
                         label="Cédula cliente"
                     >

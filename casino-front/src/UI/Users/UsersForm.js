@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import {Form, Input, Button, Typography, Select, Modal, Row, Col} from 'antd';
+import {ErrorMsg} from "../GeneralComponents/Messages";
 
 const yesno = [{
     value: 'yes',
@@ -10,6 +10,16 @@ const yesno = [{
     value: 'no',
     label: 'No',
 }
+];
+
+const gender = [{
+    value: 'F',
+    label: 'Femenino',
+}, {
+    value: 'M',
+    label: 'Masculino',
+}
+
 ];
 
 const role = [{
@@ -21,19 +31,14 @@ const role = [{
 }
 ];
 
-const gender = [{
-    value: 'F',
-    label: 'Femenino',
-}, {
-    value: 'M',
-    label: 'Masculino',
-}];
-
 class UserForm extends React.Component{
-    state = {
-        confirmDirty: false,
-        //  autoCompleteResult: [],
-    };
+    constructor(props){
+        super(props);
+        this.state = {
+            confirmDirty: false,
+        };
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
 
     compareToFirstPassword = (rule, value, callback) => {
         const form = this.props.form;
@@ -52,6 +57,33 @@ class UserForm extends React.Component{
         callback();
     }
 
+    handleSubmit(e){
+        e.preventDefault();
+        this.props.form.validateFieldsAndScroll((err, values) => {
+            if(!err){
+                const userInfo = {
+                    username: values.user,
+                    password: values.password,
+                    profile: values.rights,
+                    position: values.job,
+                    name: values.name,
+                    surname: values.surname,
+                    age: values.age,
+                    email: values.email,
+                    gender: values.gender,
+                    idtentificationNumEmpl: values.id,
+                    phone: values.phone,
+                    idOffice: "1"
+                };
+
+                console.log('Before send' , userInfo);
+                this.props.createUser(userInfo);
+            }else{
+                ErrorMsg('Información incompleta');
+            }
+
+        });
+    }
     render(){
         const { getFieldDecorator } = this.props.form;
         const {mode, visible, onCancel, existingUser, offices} = this.props;
@@ -60,34 +92,9 @@ class UserForm extends React.Component{
         ? 'Crear'
         : 'Editar') + ' usuario';
 
-        const formItemLayout = {
-            labelCol: {
-                xs: { span: 24 },
-                sm: { span: 8 },
-            },
-            wrapperCol: {
-                xs: { span: 24 },
-                sm: { span: 8 },
-            },
-        };
-
-        const tailFormItemLayout = {
-            wrapperCol: {
-                xs: {
-                    span: 24,
-                    offset: 0,
-                },
-                sm: {
-                    span: 16,
-                    offset: 8,
-                },
-            },
-        };
-
-
         //What is shown in display
         return(
-            <Modal
+            <Modal title={title}
                 visible={visible}
                 onCancel={onCancel}
                 footer={[
@@ -289,7 +296,8 @@ UserForm.propTypes = {
     mode: PropTypes.string,
     visible: PropTypes.bool,
     onCancel: PropTypes.func,
-    existingUser: PropTypes.object
+    existingUser: PropTypes.object,
+    offices: PropTypes.array
 };
 
 UserForm.defaultProps = {

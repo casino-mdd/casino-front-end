@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {toggleCreationModal, fetchUsers, createUser} from "../Store/Actions/UserActions";
-import {fetchOffices} from "../Store/Actions/OfficeActions";
 import UsersList from "../UI/Users/Users";
+import {fetchOffices} from "../Store/Actions/OfficeActions";
 
 const mapStateToProps = (state) => {
     return {
@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
         toggleModal: (flag) => dispatch(toggleCreationModal(flag)),
         fetchUsers: () => dispatch(fetchUsers()),
         createUser: (userInfo) => dispatch(createUser(userInfo)),
-        fetchOffices: () =>  dispatch()
+        fetchOffices: () =>  dispatch(fetchOffices())
     };
 };
 

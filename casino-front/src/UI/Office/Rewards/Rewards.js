@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Collapse, Card} from 'antd'
 import {Table} from 'antd'
+import '../../styles/lists_bg.css'
+import casinoBackGround from '../../../assets/img/casinoBG.jpg';
 
 const Panel = Collapse.Panel;
 
@@ -20,6 +22,22 @@ class RewardsList extends Component{
                     title: 'Puntos requeridos',
                     dataIndex: 'pointsNeed',
                     key: 'pointsNeeded'
+                },
+                {
+                    title: 'Disponible',
+                    dataIndex: 'isAvailable',
+                    key: 'isAvailable',
+                    render: isAvailable => {
+                        var ab;
+                        if (isAvailable == true) {
+                            ab =("Disponible");
+                        }
+
+                        else {
+                        ab=("No disponible");
+                        }
+                        return ab;
+                    }
                 }
             ]
         };
@@ -30,12 +48,15 @@ class RewardsList extends Component{
     }
 
     render(){
-        const { rewardsByOffice } = this.props;
         const { columns } = this.state;
         const { rewards } = this.props;
 
         return(
             <div style={{padding: '20px'}}>
+                <div className='list-style'>
+                    <div className='background-crop'>
+                        <img className='background' alt='background' src={casinoBackGround} />
+                    </div>
                 <Card title={'Premios por oficina'}>
                     <Collapse bordered={false}>
                         {
@@ -47,7 +68,7 @@ class RewardsList extends Component{
                         }
                     </Collapse>
                 </Card>
-
+                </div>
             </div>
         );
     }

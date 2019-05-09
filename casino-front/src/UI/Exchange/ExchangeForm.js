@@ -1,19 +1,10 @@
 import React from 'react'
-import {Form, Input, Button, Table,
-Typography, Select, Col, Row, Icon, Card, InputNumber, Collapse} from 'antd';
-
-const reward = [{
-    value: 'reward1',
-    label: 'Premio1',
-}, {
-    value: 'reward2',
-    label: 'Premio2',
-},
-    {
-        value: 'reward3',
-        label: 'Premio3',
-    }
-];
+import {
+    Form, Button, Table,Select, Col, Row, Icon, Card, InputNumber, Collapse
+} from 'antd';
+import '../styles/forms_bg.css'
+import casinoBackGround from '../../assets/img/casinoBG.jpg';
+import {ErrorMsg} from "../GeneralComponents/Messages";
 
 class RegExchange extends React.Component{
     constructor(props) {
@@ -43,18 +34,29 @@ class RegExchange extends React.Component{
 
     queryClientPoints(){
         const clientIdentification = this.props.form.getFieldValue('clientIdentification');
-        console.log(clientIdentification);
-        this.setState({queriedUser: true})
-        const {userInfo, clientInfo} = this.props;
-        console.log('info for calling service', userInfo, clientIdentification);
-        this.props.getClientPoints(clientIdentification, userInfo.userIdentification);
-        console.log(this.props.clientInfo);
+        if(clientIdentification==null)
+        {
+            ErrorMsg('Campos invalidos');
+        }
+        else {
+            console.log(clientIdentification);
+            this.setState({queriedUser: true})
+            const {userInfo, clientInfo} = this.props;
+            console.log('info for calling service', userInfo, clientIdentification);
+            this.props.getClientPoints(clientIdentification, userInfo.userIdentification);
+            console.log(this.props.clientInfo);
+        }
     }
 
-    performExchange(){
+    performExchange() {
         const {userInfo} = this.props;
         const clientIdentification = this.props.form.getFieldValue('clientIdentification');
         const reward = this.props.form.getFieldValue('reward');
+
+        if (clientIdentification == null || reward==null) {
+            ErrorMsg('Campos invalidos');
+        }
+        else {
         const exchangeInfo = {
             idenNumClient: clientIdentification,
             idenNumEmployee: userInfo.userIdentification,
@@ -62,51 +64,34 @@ class RegExchange extends React.Component{
         };
 
         this.props.performExchange(exchangeInfo);
+        }
     }
 
 
     render(){
         const { getFieldDecorator } = this.props.form;
 
-        const formItemLayout = {
-            labelCol: {
-                xs: { span: 24 },
-                sm: { span: 8 },
-            },
-            wrapperCol: {
-                xs: { span: 24 },
-                sm: { span: 8 },
-            },
-        };
-
-        const tailFormItemLayout = {
-            wrapperCol: {
-                xs: {
-                    span: 24,
-                    offset: 0,
-                },
-                sm: {
-                    span: 16,
-                    offset: 8,
-                },
-            },
-        };
         const {queriedUser} = this.state;
         const {clientInfo} = this.props;
 
         const availableRewards = clientInfo !== undefined
         ? clientInfo.rewards: [];
+
+
         //What is shown in display
         return(
             <div align="left" style={{padding: '20px'}}>
-
-                <Card title={'Info cliente'}>
+                <div className='trx-background-crop'>
+                    <img className='trx-background' alt='background' src={casinoBackGround} />
+                </div>
+                <Card className='trx-form-card1' title={'Info cliente'}>
                     <Row gutter={9}>
                         <Col md={8}>
                             <Form.Item layout={'inline'}>
                                 {getFieldDecorator('clientIdentification', {
+                                    rules: [{ required: true, message: 'Este campo es obligatorio'}],
                                 })(
-                                    <InputNumber placeholder={'Cedula cliente'} style={{width: '100%'}}/>
+                                 <InputNumber type="number" placeholder={'Cedula cliente'} style={{width: '100%'}}/>
                                 )
                                 }
                             </Form.Item>
@@ -125,18 +110,6 @@ class RegExchange extends React.Component{
                     <Collapse
                         disabled={true}
                     >
-                        <Collapse.Panel key={'info'} header={'Información personal'}>
-                            <Row gutter={8}>
-                                <Col md={2}>
-                                    <span>Nombre</span>
-                                    <span>{clientInfo !== undefined
-                                        ?clientInfo.name
-                                        :''
-                                    }</span>
-
-                                </Col>
-                            </Row>
-                        </Collapse.Panel>
                         <Collapse.Panel key={'points'} header={'Información puntos'}>
                             <Table columns={this.state.columns} dataSource={clientInfo !== undefined
                                 ?clientInfo.points : []}/>
@@ -146,11 +119,10 @@ class RegExchange extends React.Component{
 
                 </Card>
                 <br/>
-                <Card title={'Registro incercambios'}>
+                <Card className='trx-form-card2' title={'Registro incercambios'}>
                     <Form>
-                        <Row>
-
-                            <Col md={10}>
+                        <Row >
+                            <Col md={8}>
                                 <Form.Item
                                     label="Premio deseado"
                                     style={{width: '100%'}}
@@ -170,10 +142,11 @@ class RegExchange extends React.Component{
                             </Col>
                         </Row>
                         <Row>
-                            <Col md={15}>
+                            <Col md={8}>
                             </Col>
-                            <Col md={1}>
-                                < Form.Item>
+
+                            <Col>
+                                < Form.Item >
                                     <Button  type="primary" onClick={this.performExchange}>
                                         Redimir premio
                                     </Button>

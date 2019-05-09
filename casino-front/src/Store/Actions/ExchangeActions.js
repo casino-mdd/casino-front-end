@@ -1,6 +1,6 @@
 import {ExchangesReducerConstants as C} from '../Constants';
 import ExchangeServices from '../../Services/ExchangeServices';
-import {WarningMsg, SuccessMsg} from '../../UI/GeneralComponents/Messages';
+import {SuccessMsg, ErrorMsg} from '../../UI/GeneralComponents/Messages';
 
 const setClientInfo = (clientInfo) => {
     return {
@@ -20,10 +20,21 @@ export const getClientPoints = (clientId, userId) => {
     return dispatch => {
         ExchangeServices.queryPointsByClient(clientId, userId)
             .then(response => {
-                dispatch(setClientInfo(response.data));
+                const data = response.data;
+                if(data.points.length ==0)
+                {
+                    ErrorMsg("Sin puntos disponibles");
+                    dispatch(setClientInfo(response.data));
+                }
+                    else
+                {
+                    dispatch(setClientInfo(response.data));
+                }
+
             })
             .catch(err => {
-                WarningMsg(err.data);
+                ErrorMsg('Cliente invalido');
+                setClientInfo(null);
             });
     };
 };
@@ -47,11 +58,18 @@ export const performExchange = (exchangeInfo) => {
         ExchangeServices.performExchange(exchangeInfo)
             .then(response => {
                 console.log('seceeees', response.data);
-                SuccessMsg('Intercambio realizado con éxito');
+                const data = response.data;
+                if(data.error)
+                {
+                    ErrorMsg(data.error);
+                }
+                else {
+                    SuccessMsg('Intercambio realizado con éxito');
+                }
 
             })
             .catch(err => {
-
+                ErrorMsg('Problema registrando intercambio');
             });
     };
 };

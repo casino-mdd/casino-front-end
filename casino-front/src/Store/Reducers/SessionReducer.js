@@ -5,7 +5,8 @@ const initialState = {
     role: undefined,
     userId: undefined,
     userIdentification: undefined,
-    isSigned: false
+    isSigned: false,
+    isAdmin: false
 };
 
 export default function sessionReducer(state = initialState, action){
@@ -17,7 +18,8 @@ export default function sessionReducer(state = initialState, action){
                 role: action.role,
                 userId: action.userId,
                 userIdentification: action.userIdentification,
-                isSigned: action.isSigned
+                isSigned: action.isSigned,
+                isAdmin: action.isAdmin
             };
 
         default:

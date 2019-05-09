@@ -1,6 +1,10 @@
 import {UserReducerConstants as C, SessionReducerConstants as SessionC} from '../Constants'
 import UserServices from '../../Services/UserServices';
-import {SuccessMsg, WarningMsg} from '../../UI/GeneralComponents/Messages';
+import {message} from "antd";
+import React from "react";
+import {ErrorMsg, SuccessMsg, WarningMsg} from "../../UI/GeneralComponents/Messages";
+import OfficeServices from "../../Services/OfficeServices";
+import {bool} from "prop-types";
 
 const toggleModal = (flag) => {
     return {
@@ -16,14 +20,24 @@ const setUsers = (users) => {
     };
 };
 
+
+const setOfficesList = (offices) => {
+    return {
+        type: C.SET_OFFICES_USERS_LIST,
+        offices
+    };
+};
+
 const setUserInfo = (sessionInfo) => {
+
     return {
         type: SessionC.SET_SESSION_INFO,
         username: sessionInfo.username,
         role: sessionInfo.role,
         userId: sessionInfo.userId,
         userIdentification: sessionInfo.userIdentification,
-        isSigned: sessionInfo.isSigned
+        isSigned: sessionInfo.isSigned,
+        isAdmin: sessionInfo.isAdmin
     };
 };
 
@@ -50,13 +64,22 @@ export const signIn = (userInfo) => {
     UserServices.signIn(userInfo)
         .then(response => {
             const data = response.data;
+
             console.log('success!', response);
+            var admin;
+            admin = false;
+            if (data.profile==="ADMIN")
+            {
+                admin =true;
+            }
+            
             const sessionData = {
                 username: data.username,
                 role: data.idEmployee.position,
                 userId: data.idUserAccount,
                 userIdentification: data.idEmployee.idPerson.identificationNumber,
-                isSigned: true
+                isSigned: true,
+                isAdmin: admin
             };
 
             localStorage.setItem('username', data.username);
@@ -65,9 +88,10 @@ export const signIn = (userInfo) => {
             localStorage.setItem('userIdentification', data.idEmployee.idPerson.identificationNumber);
 
             dispatch(setUserInfo(sessionData));
+
         })
         .catch(err => {
-
+              message.error('Usuario y/o constraseña invalidos');
         });
     };
 };
@@ -86,7 +110,8 @@ export const signOut = () => {
             role: undefined,
             userId: undefined,
             userIdentification: undefined,
-            isSigned: false
+            isSigned: false,
+            isAdmin: false
         };
 
         localStorage.setItem('username', undefined);
@@ -103,12 +128,20 @@ export const createUser = (userInfo) => {
     return dispatch => {
         UserServices.createUser(userInfo)
             .then(response => {
-                SuccessMsg('usuario creado exitosamente');
-                dispatch(fetchUsers());
+
+                const data = response.data;
+                if(data.error)
+                {
+                    ErrorMsg(data.error);
+                }
+                else {
+                    SuccessMsg('Usuario creado exitosament');
+                }
                 dispatch(toggleModal(false))
             })
-            .catch(error => {
-                WarningMsg('Problema creando usuario');
+            .catch(err => {
+                WarningMsg('Error creando funcionario');
+                dispatch(toggleModal(false))
             });
     };
 };

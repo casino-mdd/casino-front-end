@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Table} from 'antd';
-import {Typography} from 'antd/lib/index';
+import '../styles/lists_bg.css'
+import casinoBackGround from '../../assets/img/casinoBG.jpg';
 
 class ExchangeReport extends Component{
     constructor(props){
@@ -9,7 +10,7 @@ class ExchangeReport extends Component{
         this.state = {
             columns:[
                 {
-                    title: 'Client',
+                    title: 'Cliente',
                     dataIndex: 'client',
                     key: 'client'
                 },
@@ -42,13 +43,17 @@ class ExchangeReport extends Component{
         const {exchanges} = this.props;
         console.log('exchanges', exchanges);
         const {columns} = this.state;
-        const { Title } = Typography;
         return(
             <div style={{padding: '20px'}}>
-                <br/>
-                <Title>Reporte de intercambios</Title>
-                <br/>
+                <div className='list-style'>
+                    <div className='background-crop'>
+                        <img className='background' alt='background' src={casinoBackGround} />
+                    </div>
+                    <br/>
+                    <h1>Reporte de intercambios</h1>
+                    <br/>
                 <Table dataSource={exchanges} columns={columns}/>
+            </div>
             </div>
         );
     }

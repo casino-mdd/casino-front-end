@@ -1,8 +1,11 @@
 import React from 'react'
-import {Form, Input, Button, Typography} from 'antd/lib/index';
+import {Form, Input, Button, Select} from 'antd/lib/index';
 import {WarningMsg} from '../../GeneralComponents/Messages';
 import {Redirect} from 'react-router-dom';
 import Routes from '../../../utils/routes';
+import '../../styles/forms_bg.css'
+import casinoBackGround from '../../../assets/img/casinoBG.jpg';
+import PropTypes from "prop-types";
 
 class RegReward extends React.Component{
     constructor(props) {
@@ -10,7 +13,6 @@ class RegReward extends React.Component{
         this.state = {
             confirmDirty: false,
             createdReward: false,
-            //  autoCompleteResult: [],
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -25,7 +27,8 @@ class RegReward extends React.Component{
                 const rewardInfo = {
                     name: values.name,
                     pointsNeed: values.points,
-                    identNumberEmployee: userInfo.userIdentification
+                    identNumberEmployee: userInfo.userIdentification,
+                    idOffice: values.office
                 };
 
                 this.props.createReward(rewardInfo);
@@ -40,6 +43,7 @@ class RegReward extends React.Component{
     render(){
         const { getFieldDecorator } = this.props.form;
         const { createdReward } = this.state;
+        const {mode, visible, onCancel, offices }= this.props;
 
         const formItemLayout = {
             labelCol: {
@@ -65,19 +69,19 @@ class RegReward extends React.Component{
             },
         };
 
-        const { Title } = Typography;
-
         //What is shown in display
         return(
             <div align="center">
                 {createdReward === true &&
                     <Redirect to={Routes.rewards}/>
                 }
-                <br/>
-                <Title>Registro de premios</Title>
-                <br/>
-
-                <Form  {...formItemLayout} onSubmit={this.handleSubmit}>
+                <Form  className='trx-form' {...formItemLayout} onSubmit={this.handleSubmit}>
+                    <br/>
+                    <h1>Registro de premios</h1>
+                    <br/>
+                    <div className='trx-background-crop'>
+                        <img className='trx-background' alt='background' src={casinoBackGround} />
+                    </div>
                     <Form.Item
                         label="Nombre del premio"
                     >
@@ -106,5 +110,13 @@ class RegReward extends React.Component{
         );
     }
 }
+
+RegReward.propTypes = {
+    mode: PropTypes.string,
+    existingRewards: PropTypes.object,
+    visible: PropTypes.bool,
+    onCancel: PropTypes.func,
+    offices: PropTypes.array
+};
 
 export default Form.create()(RegReward)

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Form, Input, Button, DatePicker, Typography, Select, Modal} from 'antd';
-import {WarningMsg} from '../GeneralComponents/Messages';
+import {Form, Input, Button, Select, Modal} from 'antd';
+import {ErrorMsg, WarningMsg} from '../GeneralComponents/Messages';
 
 const gender = [{
     value: 'F',
@@ -43,7 +43,7 @@ class ClientForm extends React.Component{
 
                 this.props.createClient(clientInfo);
             }else{
-                WarningMsg('Hay campos por validar');
+                ErrorMsg('Información incompleta');
             }
         })
     }
