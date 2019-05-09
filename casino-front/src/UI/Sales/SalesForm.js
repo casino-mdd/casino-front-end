@@ -3,6 +3,8 @@ import {Form, Input, Button, Select, message} from 'antd/lib/index';
 import SalesServuces from '../../Services/SaleServices';
 import '../styles/forms_bg.css'
 import casinoBackGround from '../../assets/img/casinoBG.jpg';
+import Routes from "../../utils/routes";
+import {Redirect} from 'react-router-dom';
 
 const payment = [{
     value: 'Efectivo',
@@ -18,6 +20,8 @@ const payment = [{
 ];
 
 class SaleRegister extends React.Component{
+    isSuccess = false;
+
     constructor(props) {
         super(props);
         this.state = {
@@ -44,8 +48,8 @@ class SaleRegister extends React.Component{
                     idenNumEmployee: userInfo.userIdentification
                 };
                 SalesServuces.registerSale(saleInfo);
-
                 message.success('Venta registrada');
+                this.isSuccess=true;
             }else{
                 message.error('Campos invalidos');
             }
@@ -82,6 +86,10 @@ class SaleRegister extends React.Component{
         //What is shown in display
         return(
             <div align="center">
+                {this.isSuccess === true &&
+                <Redirect to={Routes.sales}/>
+                }
+
                 <Form  className='trx-form' {...formItemLayout} onSubmit={this.handleSubmit}>
                     <br/>
                     <h1>Registro de ventas</h1>

@@ -1,23 +1,10 @@
 import React from 'react'
 import {
-    Form, Input, Button, Table,
-    Typography, Select, Col, Row, Icon, Card, InputNumber, Collapse, message
+    Form, Button, Table,Select, Col, Row, Icon, Card, InputNumber, Collapse
 } from 'antd';
 import '../styles/forms_bg.css'
 import casinoBackGround from '../../assets/img/casinoBG.jpg';
-
-const reward = [{
-    value: 'reward1',
-    label: 'Premio1',
-}, {
-    value: 'reward2',
-    label: 'Premio2',
-},
-    {
-        value: 'reward3',
-        label: 'Premio3',
-    }
-];
+import {ErrorMsg} from "../GeneralComponents/Messages";
 
 class RegExchange extends React.Component{
     constructor(props) {
@@ -49,7 +36,7 @@ class RegExchange extends React.Component{
         const clientIdentification = this.props.form.getFieldValue('clientIdentification');
         if(clientIdentification==null)
         {
-            message.error('Campos invalidos');
+            ErrorMsg('Campos invalidos');
         }
         else {
             console.log(clientIdentification);
@@ -67,7 +54,7 @@ class RegExchange extends React.Component{
         const reward = this.props.form.getFieldValue('reward');
 
         if (clientIdentification == null || reward==null) {
-            message.error('Campos invalidos');
+            ErrorMsg('Campos invalidos');
         }
         else {
         const exchangeInfo = {
@@ -89,6 +76,10 @@ class RegExchange extends React.Component{
 
         const availableRewards = clientInfo !== undefined
         ? clientInfo.rewards: [];
+
+        const pointsArray = clientInfo !== undefined
+        ? clientInfo.points:[];
+
         //What is shown in display
         return(
             <div align="left" style={{padding: '20px'}}>
@@ -137,9 +128,8 @@ class RegExchange extends React.Component{
                 <br/>
                 <Card className='trx-form-card2' title={'Registro incercambios'}>
                     <Form>
-                        <Row>
-
-                            <Col md={10}>
+                        <Row >
+                            <Col md={8}>
                                 <Form.Item
                                     label="Premio deseado"
                                     style={{width: '100%'}}
@@ -159,10 +149,11 @@ class RegExchange extends React.Component{
                             </Col>
                         </Row>
                         <Row>
-                            <Col md={15}>
+                            <Col md={8}>
                             </Col>
-                            <Col md={1}>
-                                < Form.Item>
+
+                            <Col>
+                                < Form.Item >
                                     <Button  type="primary" onClick={this.performExchange}>
                                         Redimir premio
                                     </Button>
