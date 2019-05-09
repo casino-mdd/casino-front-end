@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {Form, Input, Button, Typography, Select, Modal} from 'antd';
+import {Form, Input, Button, Typography, Select, Modal, Row, Col} from 'antd';
 
 const yesno = [{
     value: 'yes',
@@ -20,6 +20,14 @@ const role = [{
     label: 'Funcionario',
 }
 ];
+
+const gender = [{
+    value: 'F',
+    label: 'Femenino',
+}, {
+    value: 'M',
+    label: 'Masculino',
+}];
 
 class UserForm extends React.Component{
     state = {
@@ -46,7 +54,7 @@ class UserForm extends React.Component{
 
     render(){
         const { getFieldDecorator } = this.props.form;
-        const {mode, visible, onCancel, existingUser} = this.props;
+        const {mode, visible, onCancel, existingUser, offices} = this.props;
 
         const title = (mode === 'create'
         ? 'Crear'
@@ -82,42 +90,150 @@ class UserForm extends React.Component{
             <Modal
                 visible={visible}
                 onCancel={onCancel}
+                footer={[
+
+                ]}
             >
                 <div >
+                    <Form >
+                        <Row gutter={8}>
+                            <Col md={12}>
+                                <Form.Item
+                                    label="Username"
+                                >
+                                    {getFieldDecorator('username', {
+                                        rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
+                                    })(
+                                        <Input />
+                                    )}
+                                </Form.Item>
+                            </Col>
+                            <Col md={12}>
+                                <Form.Item
+                                    label="Contraseña"
+                                >
+                                    {getFieldDecorator('password', {
+                                        rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
+                                    })(
+                                        <Input type={'password'}/>
+                                    )}
+                                </Form.Item>
+                            </Col>
+                        </Row>
+                        <Row gutter={8}>
+                            <Col md={12}>
+                                <Form.Item
+                                    label="Cédula empleado"
+                                >
+                                    {getFieldDecorator('id', {
+                                        rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
+                                    })(
+                                        <Input type="number"/>
+                                    )}
+                                </Form.Item>
+                            </Col>
+
+                            <Col md={12}>
+                                <Form.Item
+                                    label="Perfil"
+                                >
+                                    {getFieldDecorator('profile', {
+                                        rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
+                                    })(
+                                        <Input />
+                                    )}
+                                </Form.Item>
+                            </Col>
+                        </Row>
 
 
-                    <Form   >
-                        <Form.Item
-                            label="Cédula empleado"
-                        >
-                            {getFieldDecorator('id', {
-                                rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
-                            })(
-                                <Input type="number"/>
-                            )}
-                        </Form.Item>
-                        <Form.Item
-                            label="Nombre de usuario"
-                        >
-                            {getFieldDecorator('user', {
-                                rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
-                            })(
-                                <Input />
-                            )}
-                        </Form.Item>
-                        <Form.Item
-                            label="Contraseña"
-                        >
-                            {getFieldDecorator('password', {
-                                rules: [{
-                                    required: true, message: 'Por favor ingrese una contraseña',
-                                }, {
-                                    validator: this.validateToNextPassword,
-                                }],
-                            })(
-                                <Input type="password" />
-                            )}
-                        </Form.Item>
+                        <Row gutter={8}>
+                            <Col md={12}>
+                                <Form.Item
+                                    label="Nombre"
+                                >
+                                    {getFieldDecorator('name', {
+                                        rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
+                                    })(
+                                        <Input />
+                                    )}
+                                </Form.Item>
+                            </Col>
+                            <Col md={12}>
+                                <Form.Item
+                                    label="Apellido"
+                                >
+                                    {getFieldDecorator('surname', {
+                                        rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true }],
+                                    })(
+                                        <Input />
+                                    )}
+                                </Form.Item>
+                            </Col>
+                        </Row>
+
+                        <Row gutter={8}>
+                            <Col md={12}>
+                                <Form.Item
+                                    label="Email"
+                                >
+                                    {getFieldDecorator('email', {
+                                        rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true },
+                                            {type: 'email', message: 'Inngrese un email válido'}
+                                        ],
+                                    })(
+                                        <Input />
+                                    )}
+                                </Form.Item>
+                            </Col>
+                            <Col md={12}>
+                                <Form.Item
+                                    label="Teléfono"
+                                >
+                                    {getFieldDecorator('phone', {
+                                        rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true },
+                                            {type: 'number', message: 'Inngrese un número válido'}
+                                        ],
+                                    })(
+                                        <Input type={'number'} style={{width: '100%'}}/>
+                                    )}
+                                </Form.Item>
+                            </Col>
+                        </Row>
+
+                        <Row gutter={8}>
+                            <Col md={12}>
+                                <Form.Item
+                                    label="Edad"
+                                >
+                                    {getFieldDecorator('age', {
+                                        rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true },
+                                            {type: 'number', message: 'Inngrese un número válido'}
+                                        ],
+                                    })(
+                                        <Input type={'number'} style={{width: '100%'}}/>
+                                    )}
+                                </Form.Item>
+                            </Col>
+                            <Col md={12}>
+                                <Form.Item
+                                    label="Género"
+                                >
+                                    {getFieldDecorator('phone', {
+                                        rules: [{ required: true, message: 'Este campo es obligatorio', whitespace: true },],
+                                    })(
+                                        <Select style={{width: '100%'}}>
+                                            {gender.map( (option, i) => (
+                                                <Select.Option value={option.value} key={i}>
+                                                    {option.label}
+                                                </Select.Option>
+                                            ))}
+                                        </Select>
+                                    )}
+                                </Form.Item>
+                            </Col>
+                        </Row>
+
                         <Form.Item
                             label="Confirmar contraseña"
                         >
@@ -160,9 +276,6 @@ class UserForm extends React.Component{
                                     ))}
                                 </Select>
                             )}
-                        </Form.Item>
-                        <Form.Item {...tailFormItemLayout}>
-                            <Button  type="primary" htmlType="submit">Registrar</Button>
                         </Form.Item>
 
                     </Form>

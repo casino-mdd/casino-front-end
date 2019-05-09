@@ -3,7 +3,7 @@ import request from './RequestWrapper';
 //NEW
 function createUser( userInfo ){
     return request({
-        url: 'userAccount/create',
+        url: 'userAccount/createdto',
         method: 'POST',
         data: userInfo
     });
@@ -11,10 +11,11 @@ function createUser( userInfo ){
 // LIST
 function getUserList(){
     return request({
-        url: 'userAccount/list',
+        url: 'userAccount/listdto',
         method: 'GET'
     });
 }
+
 //LOGIN
 function signIn( userInfo ){
     return request({

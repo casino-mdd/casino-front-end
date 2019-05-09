@@ -112,7 +112,10 @@ class RegExchange extends React.Component{
                             </Form.Item>
                         </Col>
                         <Col md={2}>
-                            <Button type={'primary'} onClick={this.queryClientPoints}>
+                            <Button type={'primary'} onClick={this.queryClientPoints}
+                                    disabled={this.props.form.getFieldValue('clientIdentification') == undefined ||
+                                    this.props.form.getFieldValue('clientIdentification') == ''}
+                            >
                                 <Icon type={'search'}/>
                                 Consultar puntos
                             </Button>

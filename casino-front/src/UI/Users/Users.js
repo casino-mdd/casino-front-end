@@ -20,13 +20,22 @@ class UsersList extends Component{
                 },
                 {
                     title: 'Fecha de creación',
-                    dataIndex: 'createdDate',
-                    key: 'createdDate'
+                    dataIndex: 'createdAt',
+                    key: 'createdAt'
+                },
+                {
+                    title: 'Cargo',
+                    dataIndex: 'position',
+                    key: 'position'
                 }
             ]
         };
 
         this.toggleModal = this.toggleModal.bind(this);
+    }
+
+    componentDidMount(){
+        this.props.fetchUsers();
     }
 
     toggleModal(flag){
@@ -48,7 +57,9 @@ class UsersList extends Component{
                     </Col>
                 </Row>
                 <Table dataSource={users} columns={columns}/>
-                <UserForm visible={visibleModal} onCancel={() => this.toggleModal(false)}/>
+                <UserForm visible={visibleModal} onCancel={() => this.toggleModal(false)}
+                    createUser={this.props.createUser} offices={this.props.offices}
+                />
             </div>
         );
     }

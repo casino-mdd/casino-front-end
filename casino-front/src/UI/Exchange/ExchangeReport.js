@@ -13,16 +13,20 @@ class ExchangeReport extends Component{
                     dataIndex: 'client',
                     key: 'client'
                 },
-
                 {
-                    title: 'Empleado encargado',
-                    dataIndex: 'employee',
-                    key: 'employee'
+                  title: 'Premio',
+                  dataIndex: 'nameReward',
+                  key: 'nameReward'
                 },
                 {
                     title: 'Fecha transacción',
                     dataIndex: 'date',
                     key: 'date'
+                },
+                {
+                    title: 'Empleado encargado',
+                    dataIndex: 'employee',
+                    key: 'employee'
                 }
             ]
         };

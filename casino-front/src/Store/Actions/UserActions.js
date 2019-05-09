@@ -1,5 +1,6 @@
 import {UserReducerConstants as C, SessionReducerConstants as SessionC} from '../Constants'
 import UserServices from '../../Services/UserServices';
+import {SuccessMsg, WarningMsg} from '../../UI/GeneralComponents/Messages';
 
 const toggleModal = (flag) => {
     return {
@@ -29,6 +30,18 @@ const setUserInfo = (sessionInfo) => {
 export const toggleCreationModal = (flag) =>  {
     return dispatch => {
         dispatch(toggleModal(flag));
+    };
+};
+
+export const fetchUsers = () => {
+    return dispatch => {
+        UserServices.getUserList()
+            .then(response => {
+                dispatch(setUsers(response.data));
+            })
+            .catch(error => {
+
+            })
     };
 };
 
@@ -83,5 +96,19 @@ export const signOut = () => {
 
         dispatch(setUserInfo(sessionData));
         //localStorage.clear();
+    };
+};
+
+export const createUser = (userInfo) => {
+    return dispatch => {
+        UserServices.createUser(userInfo)
+            .then(response => {
+                SuccessMsg('usuario creado exitosamente');
+                dispatch(fetchUsers());
+                dispatch(toggleModal(false))
+            })
+            .catch(error => {
+                WarningMsg('Problema creando usuario');
+            });
     };
 };
