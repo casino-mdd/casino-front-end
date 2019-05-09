@@ -2,6 +2,8 @@ import React from 'react'
 import {Form, Input, Button, Select, message} from 'antd/lib/index';
 import '../styles/forms_bg.css'
 import casinoBackGround from '../../assets/img/casinoBG.jpg';
+import {Redirect} from 'react-router-dom';
+import Routes from '../../utils/routes';
 
 const payment = [{
     value: 'Efectivo',
@@ -24,6 +26,7 @@ class SaleRegister extends React.Component{
         this.state = {
             confirmDirty: false,
             //  autoCompleteResult: [],
+            requestSent: false,
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -49,12 +52,14 @@ class SaleRegister extends React.Component{
             }else{
                 message.error('Campos invalidos');
             }
+
+            this.setState({requestSent: true});
         })
     }
 
     render(){
         const { getFieldDecorator } = this.props.form;
-
+        const {requestSent} = this.state;
         const formItemLayout = {
             labelCol: {
                 xs: { span: 24 },
@@ -82,6 +87,9 @@ class SaleRegister extends React.Component{
         //What is shown in display
         return(
             <div align="center">
+                {requestSent === true &&
+                    <Redirect to={Routes.sales}/>
+                }
                 <Form  className='trx-form' {...formItemLayout} onSubmit={this.handleSubmit}>
                     <br/>
                     <h1>Registro de ventas</h1>
