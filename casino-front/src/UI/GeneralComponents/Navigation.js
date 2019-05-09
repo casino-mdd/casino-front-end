@@ -65,6 +65,13 @@ class NavigationBar extends Component{
                     </Item>
                 </SubMenu>
                 }
+                {isSigned === true && isAdmin === true &&
+                    <Item>
+                        <NavLink to={Routes.users}>
+                            Usuarios
+                        </NavLink>
+                    </Item>
+                }
                 <SubMenu title={<span>Ventas</span>}>
                     <Item>
                         <NavLink to={Routes.salesRegister}>

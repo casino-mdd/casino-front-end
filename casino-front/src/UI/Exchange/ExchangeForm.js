@@ -5,6 +5,8 @@ import {
 import '../styles/forms_bg.css'
 import casinoBackGround from '../../assets/img/casinoBG.jpg';
 import {ErrorMsg} from "../GeneralComponents/Messages";
+import {Redirect} from 'react-router-dom';
+import Routes from '../../utils/routes';
 
 class RegExchange extends React.Component{
     constructor(props) {
@@ -26,7 +28,8 @@ class RegExchange extends React.Component{
                     key: 'exp_date'
                 }
             ],
-            availableRewards: []
+            availableRewards: [],
+            requestSent: false,
         };
         this.queryClientPoints = this.queryClientPoints.bind(this);
         this.performExchange = this.performExchange.bind(this);
@@ -64,6 +67,7 @@ class RegExchange extends React.Component{
         };
 
         this.props.performExchange(exchangeInfo);
+        this.setState({requestSent: true});
         }
     }
 
@@ -73,6 +77,7 @@ class RegExchange extends React.Component{
 
         const {queriedUser} = this.state;
         const {clientInfo} = this.props;
+        const {requestSent} = this.state;
 
         const availableRewards = clientInfo !== undefined
         ? clientInfo.rewards: [];
@@ -81,6 +86,9 @@ class RegExchange extends React.Component{
         //What is shown in display
         return(
             <div align="left" style={{padding: '20px'}}>
+                {requestSent === true &&
+                    <Redirect to={Routes.exchangeReport}/>
+                }
                 <div className='trx-background-crop'>
                     <img className='trx-background' alt='background' src={casinoBackGround} />
                 </div>

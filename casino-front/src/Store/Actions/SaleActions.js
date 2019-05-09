@@ -33,6 +33,7 @@ export const regSale = (saleInfo) => {
                 else
                 {
                     SuccessMsg('Venta registrada');
+                    dispatch(fetchSales())
                 }
             })
             .catch(err => {
