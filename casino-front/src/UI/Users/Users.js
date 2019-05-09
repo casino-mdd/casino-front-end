@@ -16,6 +16,12 @@ class UsersList extends Component{
                     key: 'username'
                 },
                 {
+                    title: 'Permisos',
+                    dataIndex: 'profile',
+                    key: 'profile'
+                },
+
+                {
                     title: 'Estado',
                     dataIndex: 'status',
                     key: 'status'
@@ -29,6 +35,10 @@ class UsersList extends Component{
         };
 
         this.toggleModal = this.toggleModal.bind(this);
+    }
+
+    componentDidMount(){
+    this.props.fetchUsers();
     }
 
     toggleModal(flag){
@@ -64,10 +74,10 @@ class UsersList extends Component{
 
 UsersList.propTypes = {
     users: PropTypes.array,
-    toggleModal: PropTypes.func,
-    visibleModal: PropTypes.bool
+  //  toggleModal: PropTypes.func,
+   // visibleModal: PropTypes.bool
 };
-
+/*
 UsersList.defaultProps = {
     users: [
         {
@@ -79,5 +89,5 @@ UsersList.defaultProps = {
     toggleModal: f => f,
     visibleModal: false
 };
-
+*/
 export default UsersList;

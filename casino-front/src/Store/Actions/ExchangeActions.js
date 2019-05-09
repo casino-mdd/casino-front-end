@@ -24,6 +24,7 @@ export const getClientPoints = (clientId, userId) => {
                 if(data.points.length ==0)
                 {
                     ErrorMsg("Sin puntos disponibles");
+                    dispatch(setClientInfo(response.data));
                 }
                     else
                 {

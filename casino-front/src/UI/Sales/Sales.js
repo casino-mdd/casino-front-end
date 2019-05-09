@@ -26,11 +26,6 @@ class SalesList extends Component{
                     key: 'cost',
                 },
                 {
-                    title: 'Puntos otorgados',
-                    dataIndex: 'points',
-                    key: 'points',
-                },
-                {
                     title: 'Funcionario',
                     dataIndex: 'employee',
                     key: 'employee',

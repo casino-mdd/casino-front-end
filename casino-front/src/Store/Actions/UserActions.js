@@ -19,6 +19,7 @@ const setUsers = (users) => {
     };
 };
 
+
 const setOfficesList = (offices) => {
     return {
         type: C.SET_OFFICES_USERS_LIST,

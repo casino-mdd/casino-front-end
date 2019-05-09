@@ -1,11 +1,7 @@
 import React from 'react'
 import {Form, Input, Button, Select, message} from 'antd/lib/index';
-import SalesServuces from '../../Services/SaleServices';
 import '../styles/forms_bg.css'
 import casinoBackGround from '../../assets/img/casinoBG.jpg';
-import Routes from "../../utils/routes";
-import {Redirect} from 'react-router-dom';
-import {SuccessMsg} from "../GeneralComponents/Messages";
 
 const payment = [{
     value: 'Efectivo',
