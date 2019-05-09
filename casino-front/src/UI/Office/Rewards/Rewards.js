@@ -37,7 +37,6 @@ class RewardsList extends Component{
     }
 
     render(){
-        const { rewardsByOffice } = this.props;
         const { columns } = this.state;
         const { rewards } = this.props;
 

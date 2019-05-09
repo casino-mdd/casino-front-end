@@ -2,7 +2,8 @@ import {UserReducerConstants as C} from "../Constants";
 
 const initialState = {
     showCreationModal: false,
-    users: []
+    users: [],
+    offices: []
 };
 
 export default function userReducer(state = initialState, action){
@@ -19,6 +20,11 @@ export default function userReducer(state = initialState, action){
                 users: action.users
             };
 
+        case C.SET_OFFICES_USERS_LIST:
+            return {
+                ...state,
+                offices: action.offices
+            };
         default:
             return state;
     }

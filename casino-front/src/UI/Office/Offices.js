@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Proptypes from 'prop-types';
-import {List, Avatar, Card, Table, Row, Col, Button, Icon, Divider} from 'antd';
+import {Table, Row, Col, Button, Icon, Divider} from 'antd';
 import OfficeForm from "./OfficeForm";
 import '../styles/lists_bg.css'
 import casinoBackGround from '../../assets/img/casinoBG.jpg';

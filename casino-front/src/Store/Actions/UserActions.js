@@ -1,8 +1,9 @@
 import {UserReducerConstants as C, SessionReducerConstants as SessionC} from '../Constants'
 import UserServices from '../../Services/UserServices';
 import {message} from "antd";
-import Routes from "../../utils/routes";
 import React from "react";
+import {ErrorMsg, SuccessMsg, WarningMsg} from "../../UI/GeneralComponents/Messages";
+import OfficeServices from "../../Services/OfficeServices";
 
 const toggleModal = (flag) => {
     return {
@@ -15,6 +16,13 @@ const setUsers = (users) => {
     return {
         type: C.SET_USERS_LIST,
         users
+    };
+};
+
+const setOfficesList = (offices) => {
+    return {
+        type: C.SET_OFFICES_USERS_LIST,
+        offices
     };
 };
 
@@ -87,5 +95,53 @@ export const signOut = () => {
 
         dispatch(setUserInfo(sessionData));
         //localStorage.clear();
+    };
+};
+
+
+export const fetchUsers= () => {
+    return dispatch => {
+        UserServices.getUserList()
+            .then(response => {
+                dispatch(setUsers(response.data))
+            })
+            .catch(err => {
+
+            });
+    };
+};
+
+export const fetchOffices = () => {
+    return dispatch => {
+        OfficeServices.getOfficeList()
+            .then(response => {
+                dispatch(setOfficesList(response.data));
+                dispatch(fetchUsers());
+            })
+            .catch(err => {
+
+            });
+    };
+};
+
+export const createUser = (userInfo) => {
+    return dispatch => {
+        UserServices.createUser(userInfo)
+            .then(response => {
+
+                const data = response.data;
+                if(data.error)
+                {
+                    ErrorMsg(data.error);
+                }
+                else {
+                    SuccessMsg('Usuario creado exitosament');
+                }
+                dispatch(toggleModal(false))
+            })
+            .catch(err => {
+                WarningMsg('Error creando funcionario');
+                dispatch(toggleModal(false))
+            });
     };
 };

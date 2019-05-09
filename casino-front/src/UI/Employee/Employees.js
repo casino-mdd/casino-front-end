@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Button, Col, Divider, Icon, Row, Table, Select} from 'antd';
+import {Button, Col, Divider, Icon, Row, Table} from 'antd';
 import EmployeeForm from './EmployeeForm'
 import '../styles/lists_bg.css'
 import casinoBackGround from '../../assets/img/casinoBG.jpg';

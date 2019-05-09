@@ -3,7 +3,7 @@ import request from './RequestWrapper';
 //NEW
 function createUser( userInfo ){
     return request({
-        url: 'userAccount/create',
+        url: 'userAccount/createdto',
         method: 'POST',
         data: userInfo
     });

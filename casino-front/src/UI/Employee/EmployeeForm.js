@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Form, Input, Button, DatePicker, Typography, Select, Modal, Row, Col, InputNumber, message} from 'antd';
+import {Form, Input, Button,  Select, Modal, Row, Col} from 'antd';
 import 'antd/dist/antd.css';
 import {ErrorMsg} from "../GeneralComponents/Messages";
 
@@ -19,7 +19,7 @@ class EmployeeForm extends React.Component{
         super(props);
         this.state = {
             confirmDirty: false,
-            //  autoCompleteResult: [],
+
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     };
@@ -56,9 +56,7 @@ class EmployeeForm extends React.Component{
         ? 'Crear'
         : 'Editar') + ' funcionario';
 
-        const config = {
-            rules: [{ type: 'object', required: true, message: 'Por favor seleccione una fecha' }],
-        };
+
         //What is shown in display
         return(
             <Modal title={title}
@@ -204,10 +202,6 @@ class EmployeeForm extends React.Component{
                                 </Form.Item>
                             </Col>
                         </Row>
-
-                        {/*<Form.Item {...tailFormItemLayout}>
-                            <Button  type="primary" htmlType="submit">Registrar</Button>
-                        </Form.Item>*/}
 
                     </Form>
 
